@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Tinos:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Telex&family=Tinos:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&family=Telex&family=Tinos:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Norican&family=Roboto+Slab&family=Source+Code+Pro:wght@300&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  background: url(/rcbl_mainpage.png);
+  background-position: center;
+  background-size: cover;
+  font-family: "Alegreya", serif;
+  color: #1f4040;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1 {
+  font-family: "Tinos", serif;
+  color: #1f4040;
+}
+h2 {
+  font-family: "Telex", sans-serif;
+  color: #1f4040;
+}
+
+a {
+  text-decoration: none;
+  color: #1f4040;
+  font-size: 16;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  color: rgb(0, 0, 0);
+  position: relative;
+  height: 30%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  margin: 50px;
+}
+
+.logo-div {
+  padding: 0.3rem;
+  border-radius: 1rem;
+  background-color: rgba(255 255 255 0.7);
+  box-shadow: 0px 0px 14px 4px rgb(157 144 144);
+}
+
+.border-line {
+  border: 1px solid black;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 3rem 2rem;
+  gap: 3rem;
+}
+.nav-bar,
+.logo {
+  color: #1f4040;
+  height: 3rem;
+}
+.logo {
+  position: relative;
+}
+.title {
+  font-size: 1.5rem;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem 7rem;
+  gap: 2rem;
+  height: 100%;
+}
+
+.name {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+.motto p {
+  font-family: "tinos";
+}
+
+.nav-con {
+  margin-left: 5rem;
+}
+
+.contact {
+  margin-bottom: 0;
+  background-color: #1f4040;
+  height: 520px;
+  border-radius: 1rem;
+  padding: 3rem;
+  box-shadow: 0px 0px 14px 4px rgb(157 144 144);
+}
+
+.contact-grid {
+  margin-top: 2rem;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 8rem;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.grid-item {
+  min-width: 350px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffddd3;
+  border-radius: 1rem;
+  justify-content: center;
+}
+
+.grid-item p {
+  text-align: center;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 800px;
+}
+
+.phone p,
+.mail a,
+.linkedin a,
+.gmap a {
+  font-size: 1.4rem;
+}
+@media screen and (max-width: 1200px) {
+  .body {
+    overflow: scroll;
+  }
+  .about {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 2rem;
+  }
+  .motto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .motto p {
+    text-align: center;
+  }
+  .about-text p {
+    text-align: center;
+  }
+  .contact {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .about p {
+    text-align: center;
+    justify-content: center;
+  }
+  .contact {
+    min-width: 450px;
+  }
+  .motto {
+    display: flex;
+    justify-content: center;
+  }
+  .motto p {
+    text-align: center;
+  }
+  .grid-item {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .grid-item p {
+    text-align: center;
+  }
+  .contact-grid {
+    grid-template-columns: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid-item {
+    width: 150px;
+    height: 150px;
+  }
+  .nav-con {
+    margin-left: 2.5rem;
+  }
+  .nav-bar {
+    padding: 0rem;
+  }
+}
