@@ -1,73 +1,95 @@
-import Image from "next/image";
-import "./styles/main.css";
-import { AiOutlineLinkedin, AiOutlineMail } from "react-icons/ai";
-import { BiMap } from "react-icons/bi";
-import { AiOutlinePhone } from "react-icons/ai";
+"use client";
 
-export default function Home() {
+import React, { Fragment, useRef, useState } from "react";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { useTheme } from "next-themes";
+import "../styles/main.css";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { GoDotFill } from "react-icons/go";
+import { PiDotDuotone } from "react-icons/pi";
+import { RiSeparator } from "react-icons/ri";
+import rcblLogo from "../../public/rcbllogo.png";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import { EffectFade, Navigation, Pagination } from "swiper/modules";
+import clsx from "clsx";
+import { averiaLibre } from "@/styles/myFonts";
+
+const menu = [
+  { name: "Home", url: "#home" },
+  { name: "Popular", url: "#popular" },
+  { name: "About", url: "#about" },
+  { name: "Contact", url: "#contact" },
+];
+
+export function HomePage() {
+  const { setTheme } = useTheme();
+  const [clicked, setClicked] = useState(false);
+
   return (
-    <div className="body">
-      <div className="nav-con m-[3rem] items-center">
-        <div className="nav-bar">
-          <div className="logo-div">
-            <img className="logo" src="/RCBL-LOGO.png" alt="Royal Craft B" />
-          </div>
-            <p className="font-bold text-2xl"> Royal Craft BD LTD</p>
-        </div>
-      </div>
-      <div className="main">
-        <div className="about gap-[3rem]">
-          <div className="motto gap-[1rem] ">
-            <p className="font-bold text-[50px]">WE CRAFT YOUR</p>
-            <p className="font-bold text-[50px] text-[#708b75]">IMAGINATION</p>
-          </div>
-          <div className="about-text">
-            <p className="font-bold text-xl">
-              <i>- A handicraft exporter in Bangladesh.</i>
-            </p>
-          </div>
-        </div>
-        <div className="w-full flex justify-center align-middle items-center">
-          <div className="contact">
-            <p
-              style={{
-                color: "#ffddd3",
-                textAlign: "center",
-                fontSize: "2.5rem",
-              }}
-            >
-              <b>Contact Us</b>
-            </p>
-            <div className="contact-grid">
-              <div className="phone grid-item gap-[0.5rem]">
-                <AiOutlinePhone className="text-[30px]" />
-                <p>
-                  <a href="tel:+8801300307004">01300307004</a> <br />
-                  <a href="tel:+8801764916879">01764916879</a>
-                </p>
-              </div>
-              <div className="mail grid-item">
-                <div className="linkedin grid-item gap-[0.5rem]">
-                  <AiOutlineMail className="text-[30px]" />
-                  <a href="mailto:info@royalcraftbd.com">
-                    info@royalcraftbd.com
-                  </a>
+    <main>
+      <div className="absolute navmenubar flex justify-center items-center p-6 gap-8 text-[#575552] light-bg dark:bg-[#544f4a] t-0 z-[1000] w-full text-[16px]">
+        {menu.map((item, key) => {
+          return (
+            <>
+              <a href={item.url} className={averiaLibre.className}>{item.name}</a>
+              {key < menu.length - 1 ? (
+                <div>
+                  <RiSeparator className="text-[18px] rotate-90" />
                 </div>
-              </div>
-              <div className="linkedin grid-item gap-[0.5rem]">
-                <AiOutlineLinkedin className="text-[30px]" />
-                <a href="https://bd.linkedin.com/in/royal-craft-bd-ltd-756b1b210">
-                  RCBL
-                </a>
-              </div>
-              <div className="gmap grid-item gap-[0.5rem]">
-                <BiMap className="text-[30px]" />
-                <a>Gazipur, Bangladesh</a>
-              </div>
-            </div>
-          </div>
+              ) : null}
+            </>
+          );
+        })}
+      </div>
+
+      <div className="body light-bg dark:bg-[#544f4a] py-[4rem] border-[1px] flex flex-col">
+        <div className="logo z-[2000]">
+          <Image src={rcblLogo} width={150} height={150} alt=""></Image>
+        </div>
+        <div id="home" className="flex w-[98%]  border-show mt-[-3rem] p-[3rem] py-[9rem]">
+          {/* HOME */}
+          <Swiper
+            className="mySwiper "
+            effect={"fade"}
+            modules={[EffectFade, Navigation, Pagination]}
+          >
+            <SwiperSlide className="light-bg dark:bg-[#544f4a]">
+                <img src="/rcbl-bag.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="light-bg dark:bg-[#544f4a]">
+              <img src="/rcbl-pouf.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="light-bg dark:bg-[#544f4a]">
+              <img src="/rcbl-planter.png" alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="light-bg dark:bg-[#544f4a]">
+              <img src="/rcbl-basket.png" alt="" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div id="popular" className="flex w-full h-[500px] bg-[#746D64] mt-[-3rem]">
+          {/* IN THE SPOTLIGHT */}
+        </div>
+        <div id="about" className="flex w-full h-[500px]">
+          {/* ABOUT US */} {/* BEST WE ARE */}
+        </div>
+        <div className="flex w-full h-[500px] bg-[#746D64]">
+          {/* REVIEW */}
+        </div>
+        <div id="contact" className="flex w-full h-[500px] ">
+          {/* CONTACT*/}
+        </div>
+        <div className="flex w-full h-[200px] border-show">
+          {/* FOOTER */}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
+
+export default HomePage;
