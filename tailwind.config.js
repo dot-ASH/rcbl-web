@@ -14,6 +14,12 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      placeholderColor: theme => theme('colors'),
+      placeholderColor: {
+       'primary': '#3490dc',
+       'secondary': '#ffed4a',
+       'danger': '#e3342f',
+     }
     },
     extend: {
       colors: {
