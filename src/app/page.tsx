@@ -45,6 +45,9 @@ import {
   whyUsSecondary,
 } from "@/data/data";
 
+import ContactsComponent from "@/components/ContactComponets";
+import { color } from "@/styles/myColor";
+
 export function HomePage() {
   const { setTheme } = useTheme();
   const [clicked, setClicked] = useState(false);
@@ -61,6 +64,7 @@ export function HomePage() {
       behavior: "smooth",
     });
   };
+
   return (
     <main>
       <div className="absolute navmenubar flex justify-center items-center p-6 gap-8 text-[#575552] light-bg dark:bg-[#544f4a] t-0 z-[1000] w-full text-[16px]">
@@ -80,7 +84,7 @@ export function HomePage() {
         })}
       </div>
 
-      <div className="body light-bg dark:bg-[#544f4a] py-[4rem] border-[1px] flex flex-col">
+      <div className="body light-bg dark:bg-[#544f4a] pt-[4rem] border-[1px] flex flex-col">
         <div className="logo z-[2000]">
           <Image src={rcblLogo} width={150} height={150} alt=""></Image>
         </div>
@@ -110,11 +114,11 @@ export function HomePage() {
         </div>
         <div
           id="popular"
-          className="flex w-full h-[600px] bg-[#746D64] mt-[-3rem] items-center justify-center"
+          className="flex w-full h-[630px] bg-[#746D64] mt-[-2rem] items-center justify-center pt-[1rem]"
           onWheel={(event) => onWheel(event)}
         >
           {/* IN THE SPOTLIGHT */}
-          <div className="flex flex-col w-[85%] h-full p-[4rem] gap-[3rem]">
+          <div className="flex flex-col w-[85%] h-full p-[4rem] gap-[3rem] pb-[6rem]">
             <p
               className={clsx("text-[32px] text-[#eae0d5ff]", h1font.className)}
             >
@@ -127,12 +131,10 @@ export function HomePage() {
               <div className="flex w-[1200px] 2xl:w-[100%] h-full justify-between gap-[1.5rem] rounded-[5px]">
                 {popular.map((item, key) => {
                   return (
-                    <>
-                      <div
-                        key={key}
-                        className="flex w-[250px] h-full bg-[#eae0d5ff] rounded-[5px]"
-                      ></div>
-                    </>
+                    <div
+                      key={key}
+                      className="flex w-[250px] h-full bg-[#eae0d5ff] rounded-[5px]"
+                    ></div>
                   );
                 })}
               </div>
@@ -362,7 +364,7 @@ export function HomePage() {
         </div>
         <div
           id="contact"
-          className="flex flex-col w-full py-[6rem] px-[8rem] items-center justify-center gap-[6rem]"
+          className="flex flex-col w-full py-[6rem] px-[8rem] items-center justify-center gap-[4rem]"
         >
           {/* CONTACT*/}
           <div className="flex relative items-center justify-center">
@@ -377,35 +379,42 @@ export function HomePage() {
             <div className="absolute w-[50px] h-[5px] bottom-0 bg-[#746D64] rounded-[5px]" />
           </div>
           <div className="w-full h-full flex flex-col">
-            <div className="flex flex-row w-full h-full justify-center">
-              {contacts.map((item, key) => {
-                return (
-                  <div
-                    key={key}
-                    className="flex flex-row gap-[1.5rem] justify-start items-center"
-                  >
-                    <div
-                      className="p-[1rem] rounded-[1rem] opacity-80"
-                      style={{
-                        backgroundColor: item.color,
-                        boxShadow: `2px 2px 10px ${item.color}`,
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-                    <div className="flex flex-col gap-[0.5rem] justify-start items-start">
-                      <h1 className={clsx("text-[22px] text-[#575552]", h1fontAlt.className)}>
-                        {item.name}
-                      </h1>
-                      <p className={clsx("text-[16px] text-[#575552]", pfont.className)}> {item.value}</p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            <ContactsComponent contacts={contacts} />
           </div>
         </div>
-        <div className="flex w-full h-[200px] border-show">{/* FOOTER */}</div>
+        <footer className="flex flex-col bg-[#dfd6cc] w-full h-full py-[2rem]  px-[7%]">
+          <div className="flex flex-row justify-center w-full py-[2rem] ">
+            <div className="footer-item">
+              <h1>Name</h1>
+              <ul>
+                <li>fsaiuj;ia</li>
+              </ul>
+            </div>
+            <div className="footer-item">
+              <h1>About</h1>
+              <ul>
+                <li>fsaiuj;ia</li>
+              </ul>
+            </div>
+            <div className="footer-item">
+              <h1>Name</h1>
+              <ul>
+                <li>fsaiuj;ia</li>
+              </ul>
+            </div>
+            <div className="footer-item">
+              <h1>Name</h1>
+              <ul>
+                <li>fsaiuj;ia</li>
+              </ul>
+            </div>
+          </div>
+          <Separator className="bg-[#a9a6a2]" />
+          <div className="flex justify-between p-[0.5rem]">
+            <p>fagaga</p>
+            <p>fafag</p>
+          </div>
+        </footer>
       </div>
     </main>
   );

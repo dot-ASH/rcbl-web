@@ -6,6 +6,8 @@ import { TbAlignBoxCenterMiddleFilled } from "react-icons/tb";
 import { FaHandshake } from "react-icons/fa";
 import { RiUser5Fill } from "react-icons/ri";
 import { AiFillPhone } from "react-icons/ai";
+import { HiMail } from "react-icons/hi";
+import { FaLinkedin } from "react-icons/fa";
 
 export const menu = [
   { name: "Home", url: "#home" },
@@ -66,12 +68,31 @@ export const whyUsSecondary = [
 
 export const contacts = [
   {
-    name: "Phone",
+    title: "Phone",
     icon: <AiFillPhone className="text-[28px] text-[#F6F7E4]" />,
-    value: "10293976397",
+    value: [
+      { name: "+880 1300307004", href: "tel:+8801300307004" },
+      { name: "+880 1764916879", href: "tel:+8801764916879" },
+    ],
     color: "#525e75",
   },
-  // { name: "Popular", url: "#popular" },
-  // { name: "About", url: "#about" },
-  // { name: "Contact", url: "#contact" },
+  {
+    title: "Email",
+    icon: <HiMail className="text-[28px] text-[#F6F7E4]" />,
+    value: [
+      { name: "info@royalcraftbd.com", href: "mailto:info@royalcraftbd.com" },
+    ],
+    color: "#c96b5b",
+  },
+  {
+    title: "LinkedIn",
+    icon: <FaLinkedin className="text-[28px] text-[#F6F7E4]" />,
+    value: [
+      {
+        name: "Royal Craft Bd LTD.",
+        href: "https://www.linkedin.com/in/royal-craft-bd-ltd-756b1b210/?originalSubdomain=bd",
+      },
+    ],
+    color: "#1c7693",
+  },
 ];

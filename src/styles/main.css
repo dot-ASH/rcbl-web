@@ -91,6 +91,11 @@ html {
   color: #c9ada7;
 }
 
+.footer-item{
+  flex-grow: 1;
+  padding: 10px;
+}
+
 @media screen and (min-width: 1500px) {
   .swiper-slide img {
     width: 40%;
