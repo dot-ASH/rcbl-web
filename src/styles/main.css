@@ -149,7 +149,7 @@ footer {
 
 .footer {
   padding-top: 3rem;
-  background-color: rgba(107, 101, 95, 1);
+  background-color: rgba(107, 101, 95, 0.96);
 }
 
 .dev a,
