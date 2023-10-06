@@ -8,6 +8,7 @@ import { RiUser5Fill } from "react-icons/ri";
 import { AiFillPhone } from "react-icons/ai";
 import { HiMail } from "react-icons/hi";
 import { FaLinkedin } from "react-icons/fa";
+import { title } from "process";
 
 export const menu = [
   { name: "Home", url: "#home" },
@@ -94,5 +95,28 @@ export const contacts = [
       },
     ],
     color: "#1c7693",
+  },
+];
+
+export const itemDemo = [
+  {
+    title: "Pouf",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+  },
+  {
+    title: "Pouf",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+  },
+  {
+    title: "Pouf",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+  },
+  {
+    title: "Pouf",
+    description:
+      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
   },
 ];

@@ -1,6 +1,7 @@
 import React from "react";
 import { h1fontAlt, pfont } from "@/styles/myFonts";
 import clsx from "clsx";
+import { RevealWrapper } from "next-reveal";
 
 interface ContactValue {
   name: string;
@@ -20,9 +21,12 @@ interface ContactsProps {
 
 const ContactsComponent: React.FC<ContactsProps> = ({ contacts }) => {
   return (
-    <div className="flex flex-row w-full h-full justify-evenly gap-[5rem] flex-wrap">
+    <div className="contact-items flex flex-row w-full h-full justify-evenly gap-[5rem] flex-wrap">
       {contacts.map((contact, index) => (
-        <div
+        <RevealWrapper
+          reset
+          duration={1000}
+          delay={index*100}
           key={index}
           className="flex flex-row gap-[1.5rem] justify-start items-center"
         >
@@ -63,7 +67,7 @@ const ContactsComponent: React.FC<ContactsProps> = ({ contacts }) => {
               </ul>
             </div>
           </div>
-        </div>
+        </RevealWrapper>
       ))}
     </div>
   );
