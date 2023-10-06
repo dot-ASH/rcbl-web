@@ -1,20 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-import { format } from "date-fns";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
+
 import {
   Form,
   FormControl,
@@ -25,20 +15,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { toast } from "@/components/ui/use-toast";
-import {
-  h1font,
-  h1fontAlt,
-  h2font,
-  h3font,
-  italicfont,
-  pfont,
-} from "@/styles/myFonts";
+import { useToast } from "@/components/ui/use-toast";
+import { h1fontAlt, pfont } from "@/styles/myFonts";
 import { Textarea } from "@/components/ui/textarea";
 import clsx from "clsx";
 import "../../styles/main.css";
@@ -54,6 +32,7 @@ const formSchema = z.object({
 });
 
 export function AccountForm() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -66,12 +45,19 @@ export function AccountForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     toast({
       title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      ),
-    })
+      description: values.email,
+      style: {
+        background: "#eae0d5ff",
+        borderWidth: 1,
+        borderColor: "#544f4a",
+        padding: "4rem",
+      },
+      // (
+      //   <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+      //     <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+      //   </pre>
+      // ),
+    });
     console.log(values);
   }
   return (
@@ -101,11 +87,9 @@ export function AccountForm() {
                   {...field}
                 />
               </FormControl>
-              <FormMessage 
-              className={clsx(
-                    "text-[#f28482] text-[14px]",
-                    pfont.className
-                  )}/>
+              <FormMessage
+                className={clsx("text-[#f28482] text-[14px]", pfont.className)}
+              />
             </FormItem>
           )}
         />
@@ -132,11 +116,9 @@ export function AccountForm() {
                   {...field}
                 />
               </FormControl>
-               <FormMessage 
-                className={clsx(
-                    "text-[#f28482] text-[14px]",
-                    pfont.className
-                  )}/>
+              <FormMessage
+                className={clsx("text-[#f28482] text-[14px]", pfont.className)}
+              />
             </FormItem>
           )}
         />
@@ -163,15 +145,21 @@ export function AccountForm() {
                   {...field}
                 />
               </FormControl>
-               <FormMessage 
-                className={clsx(
-                    "text-[#f28482] text-[14px]",
-                    pfont.className
-                  )}/>
+              <FormMessage
+                className={clsx("text-[#f28482] text-[14px]", pfont.className)}
+              />
             </FormItem>
           )}
         />
-        <Button className={clsx("bg-[#575552] h-[55px] w-[100px]", h1fontAlt.className)} type="submit">Submit</Button>
+        <Button
+          className={clsx(
+            "bg-[#575552] h-[55px] w-[100px]",
+            h1fontAlt.className
+          )}
+          type="submit"
+        >
+          Submit
+        </Button>
       </form>
     </Form>
   );

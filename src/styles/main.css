@@ -233,7 +233,7 @@ footer {
 }
 
 @media (1281px <= width <= 1500px) {
-  .float-box h1 {
+  .float-box .flex-title {
     font-size: 46px;
   }
   .float-box {
@@ -248,19 +248,19 @@ footer {
   }
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (width <= 1500px) {
   .swiper-slide img {
     width: 50%;
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (width <= 1000px) {
   .swiper-slide img {
     width: 70%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (width <= 600px) {
   .swiper-slide img {
     margin: auto;
     width: 420px;

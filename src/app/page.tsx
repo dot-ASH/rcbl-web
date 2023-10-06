@@ -1,23 +1,17 @@
 "use client";
 
-import React, { Fragment, useRef, useState } from "react";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import React, { useState } from "react";
 import { useTheme } from "next-themes";
 import "../styles/main.css";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { GoDotFill } from "react-icons/go";
-import { PiDotDuotone } from "react-icons/pi";
 import { RiSeparator } from "react-icons/ri";
 import rcblLogo from "../../public/rcbllogo.png";
 import wmap from "../../public/wmap.png";
 import bag from "../../public/bagshadow.png";
 import cycle from "../../public/cycle.png";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { BsGlobeAmericas, BsTelephone } from "react-icons/bs";
-import { BiSolidPlaneTakeOff, BiSolidHomeSmile } from "react-icons/bi";
+import { BsGlobeAmericas } from "react-icons/bs";
+import { BiSolidPlaneTakeOff } from "react-icons/bi";
 import { CiMail, CiLinkedin, CiMobile4 } from "react-icons/ci";
 import { IoIosBasket, IoIosFlower } from "react-icons/io";
 import { FaUserTie } from "react-icons/fa";
@@ -34,7 +28,6 @@ import {
   h3font,
   italicfont,
   pfont,
-  title,
 } from "@/styles/myFonts";
 import {
   contacts,
@@ -45,10 +38,11 @@ import {
   whyUsSecondary,
 } from "@/data/data";
 import ContactsComponent from "@/components/ContactComponets";
-import { color } from "@/styles/myColor";
+import { useToast } from "@/components/ui/use-toast";
 import { RevealWrapper } from "next-reveal";
 
 export function HomePage() {
+  const { toast } = useToast();
   const { setTheme } = useTheme();
   const [clicked, setClicked] = useState(false);
 
@@ -68,11 +62,20 @@ export function HomePage() {
   const Intro = (): JSX.Element => {
     return (
       <div className="float-box">
-        <h1 className={clsx("text-[48px] text-[#575552]", h1fontAlt.className)}>
+        <h1
+          className={clsx(
+            "flex-title text-[48px] text-[#575552]",
+            h1fontAlt.className
+          )}
+        >
           ROYAL CRAFT BD LTD
         </h1>
         <div className="motto">
-          <h1>hjsgohsgos</h1>
+          <h1
+            className={clsx("text-[18px] text-[#575552]", h1fontAlt.className)}
+          >
+            hjsgohsgos
+          </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
             similique quaerat doloribus eaque molestiae maxime consequatur earum
@@ -83,13 +86,21 @@ export function HomePage() {
     );
   };
 
+
   const Banner = ({ title, description }): JSX.Element => {
     return (
       <div className="float-box-right">
         <div className="flex flex-row justify-center items-center gap-[.5rem]">
           <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
           <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <h1>{title}</h1>
+          <h1
+            className={clsx(
+              "text-[18px] text-[#eae0d5ff]",
+              h1fontAlt.className
+            )}
+          >
+            {title}
+          </h1>
           <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
           <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
         </div>
@@ -179,7 +190,7 @@ export function HomePage() {
             className="absolute bottom-[30%] right-[-1.5rem] border-[#746D64] p-[1rem] z-[2000] shadow-md rounded-tl-[1rem] rounded-bl-[1rem] bg-[#dfd6cc]"
           >
             <p className={clsx("text-[#746D64] text-[12px]", pfont.className)}>
-              Swipe the image to right to see more!
+              Swipe the image to left to see more!
             </p>
           </RevealWrapper>
         </div>
