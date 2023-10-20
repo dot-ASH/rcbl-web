@@ -8,6 +8,11 @@ html {
   overflow-x: hidden;
 }
 
+main {
+  position: relative;
+  overflow-x: hidden;
+}
+
 #container {
   overflow-y: hidden;
   overflow-x: scroll;
@@ -53,19 +58,17 @@ html {
   position: absolute;
   display: flex;
   height: 200px;
-  border-radius: 1rem;
   top: 5%;
   left: 3%;
-  padding: 1rem;
   flex-direction: column;
   gap: 4rem;
+  transition: z-index 500ms ease-in;
 }
 
 .float-box-right {
   position: absolute;
   display: flex;
-  width: 300px;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   top: 2%;
   right: 7%;
   padding: 1rem;
@@ -74,6 +77,8 @@ html {
   background-color: #746d64;
   box-shadow: 2px 2px 5px #544f4a;
   color: #eae0d5ff;
+  transition: z-index 1s ease-in;
+  z-index: 2000;
 }
 
 .float-box-right p,
@@ -86,12 +91,13 @@ html {
   flex-direction: column;
   padding: 1rem;
   border: 1px solid #a49e98;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   width: 18em;
   box-shadow: 2px 2px 7px #cbc3b9;
   gap: 1rem;
   text-align: left;
   background-color: #eae0d5ff;
+  transition: z-index 500ms ease-in;
 }
 
 .swiper-img {
@@ -177,19 +183,74 @@ footer {
   }
 }
 
-@media (width <= 810px) {
+@media (width <=640px) {
+  #home {
+    height: 750px;
+  }
+  .title {
+    margin-top: 3rem;
+    display: block;
+    font-size: 28px;
+  }
+  .flex-title {
+    display: none;
+  }
+
+  .border-show {
+    border-top: 0px;
+  }
+
+  .float-box {
+    position: absolute;
+    top: unset;
+    bottom: 6%;
+    left: 15%;
+    margin: auto;
+    self-align: center;
+  }
+
+  .motto {
+    width: 300px;
+    height: 200px;
+    box-shadow: 2px 2px 5px #544f4a;
+  }
+
+  .float-box-right {
+    position: absolute;
+    top: unset;
+    bottom: 4%;
+    width: 300px;
+    height: 200px;
+  }
+}
+
+/* @media (width >= 640) {
+  .float-box {
+    position: absolute;
+    display: flex;
+    height: 200px;
+    border-radius: 1rem;
+    top: 5%;
+    left: 3%;
+    padding: 1rem;
+    flex-direction: column;
+    gap: 4rem;
+  }
+} */
+
+@media (640px < width <= 768px) {
   #home {
     padding: 10rem 0rem;
   }
-  #form{
+  #form {
     padding: 6rem 3rem;
   }
-  #connected{
+  #connected {
     padding: 0rem 3rem;
   }
   .title {
     display: block;
-    margin-top: -3rem;
+    margin-top: -2rem;
     padding-bottom: 2rem;
   }
   .float-box {
@@ -205,18 +266,29 @@ footer {
     width: 200px;
     right: 1%;
   }
-  .cycle{
+  .cycle {
     padding: 1rem;
     padding-left: 2rem;
   }
-  .contact-items{
+  .contact-items {
     flex-direction: column;
-    justify-content: center; 
-     margin-left: 35%;
+    justify-content: center;
+    margin-left: 35%;
+  }
+  .float-box {
+    position: relative;
+    top: 5%;
+    left: 3%;
+  }
+
+  .float-box-right {
+    position: relative;
+    top: 2%;
+    right: 7%;
   }
 }
 
-@media (811px <= width <= 1280px) {
+@media (768px < width <= 1024px) {
   #home {
     padding: 9rem 1rem;
   }
@@ -232,7 +304,7 @@ footer {
   }
 }
 
-@media (1281px <= width <= 1500px) {
+@media (1024px < width <= 1536px) {
   .float-box .flex-title {
     font-size: 46px;
   }
@@ -260,9 +332,10 @@ footer {
   }
 }
 
-@media screen and (width <= 600px) {
+@media screen and (width <= 640px) {
   .swiper-slide img {
     margin: auto;
-    width: 420px;
+    margin-top: -8rem;
+    width: 500px;
   }
 }
