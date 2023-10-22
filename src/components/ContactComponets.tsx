@@ -21,12 +21,12 @@ interface ContactsProps {
 
 const ContactsComponent: React.FC<ContactsProps> = ({ contacts }) => {
   return (
-    <div className="contact-items flex flex-row w-full h-full justify-evenly gap-[5rem] flex-wrap">
+    <div className="contact-items flex flex-row w-full h-full justify-center sm:justify-evenly gap-[5rem] flex-wrap">
       {contacts.map((contact, index) => (
         <RevealWrapper
           reset
           duration={1000}
-          delay={index*100}
+          delay={index * 100}
           key={index}
           className="flex flex-row gap-[1.5rem] justify-start items-center"
         >
@@ -51,7 +51,7 @@ const ContactsComponent: React.FC<ContactsProps> = ({ contacts }) => {
             <div>
               <ul>
                 {contact.value.map((item, i) => (
-                  <li key={i} className="leading-[2rem]">
+                  <li key={i} className="leading-[2rem] w-[150px]">
                     <a
                       href={item.href}
                       className={clsx(

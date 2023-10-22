@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import "../styles/main.css";
 import Image from "next/image";
@@ -42,12 +42,13 @@ import { useToast } from "@/components/ui/use-toast";
 import { RevealWrapper } from "next-reveal";
 import { HiMenuAlt3 } from "react-icons/hi";
 
-export function HomePage() {
+function Home() {
   const { toast } = useToast();
   const { setTheme } = useTheme();
   const [clicked, setClicked] = useState(false);
   const [hasMenu, setMenu] = useState(false);
   const [changeTop, setChangeTop] = useState(false);
+  const [header, setHeader] = useState(false);
 
   const onWheel = (e: any) => {
     e.preventDefault();
@@ -62,11 +63,56 @@ export function HomePage() {
     });
   };
 
+  const handleScroll = () => {
+    var y = Math.abs(window.scrollY);
+    y > 150 && y < 800 ? setChangeTop(true) : setChangeTop(false);
+    y > 450 ? setHeader(true) : setHeader(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+
   const Intro = (): JSX.Element => {
     return (
+      <div className="float-box hidden sm:flex">
+        <h1
+          className={clsx(
+            "flex-title text-[48px] text-[#575552]",
+            h1fontAlt.className
+          )}
+        >
+          ROYAL CRAFT BD LTD
+        </h1>
+        <div className="motto">
+          <h1
+            className={clsx(
+              "text-[18px] text-[#575552] text-center sm:text-left",
+              h1fontAlt.className
+            )}
+          >
+            hjsgohsgos
+          </h1>
+          <p
+            className={clsx(
+              "text-[12px] text-[#575552] text-center sm:text-left",
+              pfont.className
+            )}
+          >
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
+            similique quaerat doloribus eaque molestiae maxime consequatur earum
+            accusantium, sequi officiis!
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  const IntroBase = (): JSX.Element => {
+    return (
       <div
-        className="float-box"
-        style={{ zIndex: changeTop ? "3000" : "1000" }}
+        className="flex absolute bottom-[0%] ml-[-1rem] sm:hidden"
+        style={{ zIndex: changeTop ? "1000" : "3000" }}
         onClick={() => setChangeTop((prev) => !prev)}
       >
         <h1
@@ -86,7 +132,12 @@ export function HomePage() {
           >
             hjsgohsgos
           </h1>
-          <p className="text-center sm:text-left">
+          <p
+            className={clsx(
+              "text-[12px] text-[#575552] text-center sm:text-left",
+              pfont.className
+            )}
+          >
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
             similique quaerat doloribus eaque molestiae maxime consequatur earum
             accusantium, sequi officiis!
@@ -98,8 +149,38 @@ export function HomePage() {
 
   const Banner = ({ title, description }): JSX.Element => {
     return (
+      <div className="float-box-right hidden sm:flex sm:w-[300px]">
+        <div className="flex flex-row justify-center items-center gap-[.5rem]">
+          <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
+          <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
+          <h1
+            className={clsx(
+              "text-[18px] text-[#eae0d5ff]",
+              h1fontAlt.className
+            )}
+          >
+            {title}
+          </h1>
+          <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
+          <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
+        </div>
+        <p
+          className={clsx(
+            "text-[12px] text-[#eae0d5ff] text-center sm:text-left",
+            pfont.className
+          )}
+        >
+          {description}
+        </p>
+      </div>
+    );
+  };
+
+  const BannerBase = ({ title, description }): JSX.Element => {
+    return (
       <div
-        className="float-box-right sm:w-[300px]"
+        className="flex float-box-right-base absolute sm:hidden ml-[1rem] w-[300px] h-[200px] bottom-[1rem]"
+        style={{ zIndex: changeTop ? "3000" : "1000" }}
         onClick={() => setChangeTop((prev) => !prev)}
       >
         <div className="flex flex-row justify-center items-center gap-[.5rem]">
@@ -116,51 +197,55 @@ export function HomePage() {
           <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
           <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
         </div>
-        <p className={pfont.className}>{description}</p>
+        <p
+          className={clsx(
+            "text-[12px] text-[#eae0d5ff] text-center sm:text-left",
+            pfont.className
+          )}
+        >
+          {description}
+        </p>
       </div>
     );
   };
 
   const SidePanel = (): JSX.Element => {
     return (
-      <div className="fixed right-[0] h-[100vh] flex flex-col gap-5 bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem]">
+      <div
+        className="side-menu fixed h-[100vh] flex flex-col bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem] duration-500 transition-all gap-[4rem]"
+        style={{ right: hasMenu ? 0 : "-100%" }}
+      >
         <BiCross
           className="text-[#575552] text-[24px] rotate-[130deg]"
           onClick={() => setMenu((prev) => !prev)}
         />
-        {menu.map((item, index) => {
-          return (
-            <div
-              className="flex flex-row items-center sm:gap-[1rem] py-[1rem] px-[3rem]"
-              key={index}
-            >
-              <a href={item.url} className={h3font.className}>
-                {item.name}
-              </a>
-            </div>
-          );
-        })}
-
-        {/* <div className="flex flex-row justify-center items-center gap-[.5rem]">
-          <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <h1
-            className={clsx(
-              "text-[18px] text-[#eae0d5ff]",
-              h1fontAlt.className
-            )}
-          ></h1>
-          <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
+        <div className="flex flex-col gap-[2rem] ml-[-1rem]">
+          {menu.map((item, index) => {
+            return (
+              <div
+                className="flex flex-row items-center gap-[2rem] sm:gap-[1rem] py-[1rem] px-[3rem] ml-[-1rem]"
+                key={index}
+              >
+                <div className="flex sm:hidden">
+                  <RiSeparator className="text-[18px] rotate-90" />
+                </div>
+                <a
+                  href={item.url}
+                  className={clsx("text-[#575552]", h3font.className)}
+                >
+                  {item.name}
+                </a>
+              </div>
+            );
+          })}
         </div>
-        <p className={pfont.className}></p> */}
       </div>
     );
   };
 
   return (
-    <main>
-      {hasMenu ? <SidePanel /> : null}
+    <main className="relative">
+      <SidePanel />
       <div className="absolute navmenubar hidden sm:flex justify-center items-center p-6 gap-8 text-[#575552] light-bg t-0 z-[1000] w-full text-[16px]">
         {menu.map((item, index) => {
           return (
@@ -168,7 +253,13 @@ export function HomePage() {
               className="flex flex-row items-center sm:gap-[1rem] lg:gap-[4rem]"
               key={index}
             >
-              <a href={item.url} className={h3font.className}>
+              <a
+                href={item.url}
+                className={clsx(
+                  "text-[#575552] hover:underline",
+                  h3font.className
+                )}
+              >
                 {item.name}
               </a>
               {index < menu.length - 1 ? (
@@ -182,17 +273,17 @@ export function HomePage() {
       </div>
 
       <div className="body light-bg pt-[1rem] sm:pt-[3rem] border-[1px] flex flex-col">
-        <div className="flex flex-row justify-between sm:justify-center z-[2000] w-[100%] items-center">
+        <div className="flex flex-row justify-between sm:justify-center z-[2000] w-[100%] items-center top-0">
           <Image src={rcblLogo} width={150} height={150} alt="" />
           <HiMenuAlt3
-            className="flex sm:hidden text-[#575552] text-[24px] opacity-[0.8] mr-[2rem]"
+            className="menu-indicator flex sm:hidden text-[#575552] text-[24px] opacity-[0.8] mr-[2rem]"
             onClick={() => setMenu((prev) => !prev)}
           />
         </div>
         {/* HOME */}
         <div
           id="home"
-          className="relative flex flex-col w-[98%] justify-center border-show  mt-[-3rem] p-[1rem] sm:p-[3rem] sm:py-[9rem]"
+          className="relative flex flex-col w-[98%] justify-center border-show  mt-[-3rem] p-[1rem] sm:p-[3rem] sm:py-[9rem] "
         >
           <h1
             className={clsx(
@@ -203,17 +294,28 @@ export function HomePage() {
             ROYAL CRAFT BD LTD
           </h1>
           <Swiper
+            id="swiper"
             className="mySwiper "
             effect={"fade"}
             modules={[EffectFade, Navigation, Pagination]}
           >
-            <SwiperSlide className="relative light-bg swiperContainer">
+            <SwiperSlide className="relative light-bg swiperContainer ">
               <img className="swiper-img" src="/rcbl-bag.png" alt="" />
               <Intro />
               <Banner
                 title={itemDemo[0].title}
                 description={itemDemo[0].description}
               />
+              <div
+                className="absolute bottom-[2rem] flex sm:hidden w-full h-full px-auto justify-center"
+                onClick={() => setChangeTop((prev) => !prev)}
+              >
+                <IntroBase />
+                <BannerBase
+                  title={itemDemo[0].title}
+                  description={itemDemo[0].description}
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide className="relative light-bg flex">
               <img className="swiper-img" src="/rcbl-pouf.png" alt="" />
@@ -222,6 +324,16 @@ export function HomePage() {
                 title={itemDemo[1].title}
                 description={itemDemo[1].description}
               />
+              <div
+                className="absolute bottom-[2rem] flex sm:hidden w-full h-full px-auto justify-center"
+                onClick={() => setChangeTop((prev) => !prev)}
+              >
+                <IntroBase />
+                <BannerBase
+                  title={itemDemo[1].title}
+                  description={itemDemo[1].description}
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide className="relative light-bg">
               <img className="swiper-img" src="/rcbl-planter.png" alt="" />
@@ -230,6 +342,16 @@ export function HomePage() {
                 title={itemDemo[2].title}
                 description={itemDemo[2].description}
               />
+              <div
+                className="absolute bottom-[2rem] flex sm:hidden w-full h-full px-auto justify-center"
+                onClick={() => setChangeTop((prev) => !prev)}
+              >
+                <IntroBase />
+                <BannerBase
+                  title={itemDemo[2].title}
+                  description={itemDemo[2].description}
+                />
+              </div>
             </SwiperSlide>
             <SwiperSlide className="relative light-bg">
               <img className="swiper-img" src="/rcbl-basket.png" alt="" />
@@ -238,24 +360,53 @@ export function HomePage() {
                 title={itemDemo[3].title}
                 description={itemDemo[3].description}
               />
+              <div
+                className="absolute bottom-[2rem] flex sm:hidden w-full h-full px-auto justify-center"
+                onClick={() => setChangeTop((prev) => !prev)}
+              >
+                <IntroBase />
+                <BannerBase
+                  title={itemDemo[3].title}
+                  description={itemDemo[3].description}
+                />
+              </div>
             </SwiperSlide>
           </Swiper>
           <RevealWrapper
             origin="right"
             duration={1800}
             reset
-            className="absolute bottom-[53%] sm:bottom-[30%]  right-[-1.5rem] border-[#746D64] p-[1rem] z-[2000] shadow-md rounded-tl-[1rem] rounded-bl-[1rem] bg-[#dfd6cc]"
+            className="absolute bottom-[48%] sm:bottom-[30%]  right-[-1.5rem] border-[#746D64] p-[1rem] z-[2000] shadow-md rounded-tl-[1rem] rounded-bl-[1rem] bg-[#dfd6cc]"
           >
             <p className={clsx("text-[#746D64] text-[12px]", pfont.className)}>
               Swipe the image to left to see more! &nbsp;
             </p>
           </RevealWrapper>
+          <RevealWrapper
+            origin="left"
+            duration={600}
+            reset
+            className="absolute bottom-[-1rem] lg:bottom-[unset] lg:top-[31rem] left-[-1.5rem] lg:left-[6%] 2xl:left-[5.5%] z-[2000]  rounded-tr-[1rem] rounded-br-[1rem] lg:rounded-tl-[1rem] shadow-xl shadow-stone-500"
+          >
+            <div>
+              <a
+                href="#contact"
+                className={clsx(
+                  "bg-[#746D64] text-[15px] lg:text-[18px] text-[#dfd6cc] p-[0.7rem] sm:p-[0.5] rounded-tr-[1rem] rounded-br-[1rem] lg:rounded-[0.7rem] hover:underline px-[1.5rem]",
+                  h1fontAlt.className
+                )}
+              >
+                CONTACT US
+              </a>
+            </div>
+          </RevealWrapper>
         </div>
         {/* IN THE SPOTLIGHT */}
         <div
           id="popular"
-          className="flex w-full h-[600px] sm:h-[650] bg-[#746D64] mt-[4rem] sm:mt-[-2rem] items-center justify-center pt-[1rem]"
+          className="flex w-full h-[650px] sm:h-[680px] bg-[#746D64] mt-[5rem] sm:mt-[-2rem] items-center justify-center pt-[1rem]"
           onWheel={(event) => onWheel(event)}
+          onScroll={(event) => onWheel(event)}
         >
           <div className="flex flex-col w-[85%] h-full p-[1rem] sm:p-[4rem] gap-[3rem] pb-[6rem]">
             <p
@@ -270,12 +421,12 @@ export function HomePage() {
               className="h-[100%] w-[100%] overflow-scroll rounded-[5px] mb-[1rem] sm:mb-[2rem]"
               id="container"
             >
-              <div className="flex w-[1200px] 2xl:w-[100%] h-full justify-between gap-[1.5rem] rounded-[5px] ">
+              <div className="flex w-[1200px] 2xl:w-[100%] h-full justify-between gap-[1rem] rounded-[5px] ">
                 {popular.map((item, index) => {
                   return (
                     <div
                       key={index}
-                      className="flex w-[250px] h-full bg-[#eae0d5ff] rounded-[5px]"
+                      className="flex w-[270px] h-full bg-[#eae0d5ff] rounded-[5px]"
                     ></div>
                   );
                 })}
@@ -344,7 +495,7 @@ export function HomePage() {
         </div>
         <div
           id="services"
-          className="flex relative flex-col w-full py-[6rem] bg-[#746D64] justify-center items-center"
+          className="flex relative flex-col w-full py-[7rem] bg-[#746D64] justify-center items-center"
         >
           {/* WHY US */}
 
@@ -359,21 +510,21 @@ export function HomePage() {
             </p>
             <div className="absolute w-[50px] h-[5px] bottom-0 bg-[#eae0d5ff] rounded-[5px]" />
           </div>
-          <div className="flex flex-col gap-[4rem] justify-center items-center">
+          <div className="flex flex-row sm:flex-col gap-[1rem] sm:gap-[4rem] justify-center items-start sm:items-center">
             <RevealWrapper
               reset={true}
-              className="flex gap-[1rem]  justify-center items-center"
+              className="flex flex-col sm:flex-row gap-[2rem] sm:gap-[1rem]  justify-center items-center"
             >
               {whyUsPrimary.map((item, index) => {
                 return (
                   <div
-                    className="flex flex-col justify-center items-center w-[200px] gap-[0.5rem]"
+                    className="flex flex-col justify-center items-center w-[150px] sm:w-[200px] gap-[0.5rem]"
                     key={index}
                   >
                     {item.icon}
                     <p
                       className={clsx(
-                        "text-center font-[700] text-[#F6F7E4] text-[18px]",
+                        "text-center font-[700] text-[#F6F7E4] text-[16px] sm:text-[18px]",
                         h1fontAlt.className
                       )}
                     >
@@ -393,7 +544,7 @@ export function HomePage() {
             </RevealWrapper>
             <RevealWrapper
               reset={true}
-              className="flex gap-[1rem] justify-center items-center"
+              className="flex flex-col sm:flex-row gap-[2rem] sm:gap-[1rem] justify-center items-center"
             >
               {whyUsSecondary.map((item, index) => {
                 return (
@@ -404,7 +555,7 @@ export function HomePage() {
                     {item.icon}
                     <p
                       className={clsx(
-                        "text-center font-[700] text-[#F6F7E4] text-[18px]",
+                        "text-center font-[700] text-[#F6F7E4] text-[16px] sm:text-[18px]",
                         h1fontAlt.className
                       )}
                     >
@@ -424,26 +575,26 @@ export function HomePage() {
             </RevealWrapper>
           </div>
           <RevealWrapper distance="0px" duration={1200} reset>
-            <IoIosBasket className="absolute text-[250px] text-[#F6F7E4] opacity-[0.1] top-[7%] right-[5%]" />
+            <IoIosBasket className="absolute text-[250px] text-[#F6F7E4] opacity-[0.05] top-[7%] right-[5%]" />
           </RevealWrapper>
           <RevealWrapper distance="0px" duration={1200} reset>
-            <IoIosFlower className="absolute text-[200px] text-[#F6F7E4] opacity-[0.1] bottom-[7%] left-[5%]" />
+            <IoIosFlower className="absolute text-[200px] text-[#F6F7E4] opacity-[0.2] sm:opacity-[0.1] bottom-[6%] left-[4%]" />
           </RevealWrapper>
         </div>
         {/* CONNECTED*/}
-        <div className="flex flex-col sm:flex-row w-full sm:h-[600px] items-center justify-center">
+        <div className="flex flex-col lg:flex-row w-full lg:h-[600px] items-center justify-center">
           <div
             id="connected"
-            className=" relative h-full flex w-full sm:w-[60%] bg-[#F6F7E4] flex-col justify-center z-[50] p-[4rem] pt-[6rem] sm:px-[8rem]"
+            className=" relative h-full flex w-full lg:w-[60%] bg-[#F6F7E4] flex-col justify-center z-[50] p-[3rem] py-[8rem] lg:px-[8rem] "
           >
             <div className="relative mb-[2rem]">
               <p
                 className={clsx(
-                  "text-[26px] sm:text-[32px] text-[#575552] text-left pb-[1rem]",
+                  "text-[24px] lg:text-[32px] text-[#575552] text-left pb-[1rem]",
                   h1font.className
                 )}
               >
-                STAY CONNECTED . . .
+                STAY CONNECTED
               </p>
               <div className="absolute w-[150px] h-[5px] bottom-0 bg-[#575552] rounded-[5px]" />
             </div>
@@ -491,8 +642,8 @@ export function HomePage() {
               </p>
             </RevealWrapper>
           </div>
-          <div className="cycle relative flex w-full sm:w-[40%] flex-col h-full justify-center gap-[1rem] items-center ml-[2rem] p-[2rem] sm:p-[6rem]">
-            <div className="mb-[2rem] sm:mb-[1rem]">
+          <div className="cycle relative flex w-full lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center ml-[2rem] p-[2rem] lg:p-[6rem]">
+            <div className="mb-[2rem] lg:mb-[1rem]">
               <Image src={cycle} width={600} height={150} alt=""></Image>
             </div>
           </div>
@@ -500,13 +651,13 @@ export function HomePage() {
         {/* FORM*/}
         <div
           id="form"
-          className="flex flex-col sm:flex-row w-full bg-[#746D64] sm:px-[8rem] sm:py-[6rem] p-[4rem] items-center justify-between"
+          className="flex flex-col lg:flex-row w-full bg-[#746D64] lg:px-[8rem] lg:py-[6rem] p-[3rem] py-[5rem] items-center justify-between gap-[4rem] lg:gap-[0rem]"
         >
-          <div className="relative flex w-full sm:w-[40%] flex-col h-full justify-center gap-[1rem] items-center">
+          <div className="relative flex w-full lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center">
             <div className="flex flex-col justify-start items-left h-full">
               <p
                 className={clsx(
-                  "text-[28px] text-[#eae0d5ff] text-left pb-[1rem]",
+                  "text-[28px] text-[#eae0d5ff] text-center lg:text-left py-[2rem] pb-[2rem] lg:pb-[1rem] ",
                   h1font.className
                 )}
               >
@@ -517,7 +668,7 @@ export function HomePage() {
                 duration={1200}
                 reset
                 className={clsx(
-                  "text-[14px] text-[#F6F7E4] text-justify mr-[2rem]",
+                  "text-[14px] text-[#F6F7E4] text-center lg:text-justify lg:mr-[2rem]",
                   pfont.className
                 )}
               >
@@ -526,15 +677,15 @@ export function HomePage() {
                 quae accusamus quidem eos quisquam aliquam ratione qui optio
                 facilis voluptatem quo earum rem?
               </RevealWrapper>
-              <div className="absolute w-[3px] h-[150px] right-0 top-3 bg-[#eae0d5ff] rounded-[5px]" />
+              <div className="hidden lg:block absolute w-[3px] h-[150px] right-0 top-3 bg-[#eae0d5ff] rounded-[5px]" />
             </div>
           </div>
-          <div className="relative flex w-full sm:w-[60%] flex-col h-full justify-center gap-[1rem] items-left ml-[3rem]">
+          <div className="relative flex w-full lg:w-[60%] flex-col h-full justify-center gap-[1rem] items-left lg:ml-[3rem]">
             <div className="form-border-show rounded-[5px] p-[1.5rem] space-y-4">
               <div>
                 <h3
                   className={clsx(
-                    "text-[28px] text-[#F6F7E4] text-justify mr-[2rem]",
+                    "text-[22px] lg:text-[28px] text-[#F6F7E4] text-justify mr-[2rem]",
                     h1fontAlt.className
                   )}
                 >
@@ -551,16 +702,16 @@ export function HomePage() {
           id="contact"
           className="flex flex-col w-full py-[6rem] px-[8rem] items-center justify-center gap-[4rem]"
         >
-          <div className="flex relative items-center justify-center">
+          <div className="flex relative items-center justify-center flex-nowrap">
             <p
               className={clsx(
-                "text-[26px] text-[#746D64] text-center mb-[1rem]",
+                "flex whitespace-nowrap text-[26px] text-[#746D64] text-center mb-[1rem]",
                 h1font.className
               )}
             >
               CONTACT US?
             </p>
-            <div className="absolute w-[50px] h-[5px] bottom-0 bg-[#746D64] rounded-[5px]" />
+            <div className="absolute w-[80px] h-[5px] bottom-0 bg-[#746D64] rounded-[5px]" />
           </div>
           <div className="w-full h-full flex flex-col">
             <ContactsComponent contacts={contacts} />
@@ -572,7 +723,7 @@ export function HomePage() {
             <div className="flex w-full justify-center text-[15px] text-[#eae0d5ff]">
               {"<></>"}
             </div>
-            <div className="flex flex-row justify-center w-full py-[1rem] gap-[2rem]">
+            <div className="flex flex-row justify-center w-full py-[1rem] gap-[1rem] sm:gap-[2rem]">
               <a
                 href="#home"
                 className={clsx(
@@ -665,4 +816,4 @@ export function HomePage() {
   );
 }
 
-export default HomePage;
+export default Home;

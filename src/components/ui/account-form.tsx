@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 
 import {
   Form,
@@ -20,6 +21,8 @@ import { h1fontAlt, pfont } from "@/styles/myFonts";
 import { Textarea } from "@/components/ui/textarea";
 import clsx from "clsx";
 import "../../styles/main.css";
+
+const api = process.env.NEXT_PUBLIC_API_URL || "";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -43,22 +46,28 @@ export function AccountForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: values.email,
-      style: {
-        background: "#eae0d5ff",
-        borderWidth: 1,
-        borderColor: "#544f4a",
-        padding: "4rem",
-      },
-      // (
-      //   <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-      //     <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-      //   </pre>
-      // ),
-    });
     console.log(values);
+    axios
+      .post(api, values)
+      .then((response) => {
+        if (response.status === 200) {
+          toast({
+            title: "You submitted the following values:",
+            description: [values.email, values.name],
+            style: {
+              background: "#eae0d5ff",
+              borderWidth: 1,
+              borderColor: "#544f4a",
+              padding: "4rem",
+            },
+          });
+        } else {
+          console.log("Error posting data to the server");
+        }
+      })
+      .catch((error) => {
+        console.log("Axios error:", error.message);
+      });
   }
   return (
     <Form {...form}>
