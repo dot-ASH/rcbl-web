@@ -92,7 +92,7 @@ export function AccountForm() {
                     pfont.className
                   )}
                   // style={{placeholder}}
-                  placeholder="e.g. sakir@gmail.com"
+                  placeholder="e.g. info@royalcraftbd.com"
                   {...field}
                 />
               </FormControl>
@@ -162,7 +162,7 @@ export function AccountForm() {
         />
         <Button
           className={clsx(
-            "bg-[#575552] h-[55px] w-[100px]",
+            "bg-[#575552] h-[55px] w-[100px] text-[#eae0d5ff] hover:text-[#575552]",
             h1fontAlt.className
           )}
           type="submit"

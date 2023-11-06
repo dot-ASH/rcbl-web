@@ -100,23 +100,23 @@ export const contacts = [
 
 export const itemDemo = [
   {
-    title: "Pouf",
+    title: "Bag",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+      "Introducing our sustainable bag, a stylish and eco-conscious choice that reflects our brand's commitment to sustainability. Crafted from recycled materials, this versatile and customizable bag makes a lasting impression while reducing waste and promoting a greener future.",
   },
   {
     title: "Pouf",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+      "Presenting our eco-friendly pouf, a stylish embodiment of our brand's dedication to sustainability. Crafted from upcycled materials, this versatile and customizable pouf is a comfortable and lasting statement that reduces waste and supports a more environmentally responsible future.",
   },
   {
-    title: "Pouf",
+    title: "Planter",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+      "a chic and eco-conscious choice that echoes our brand's deep commitment to environmental responsibility. This versatile and personalized planter not only brings a touch of green to any setting, actively reducing waste and promoting a more environmentally conscious future.",
   },
   {
-    title: "Pouf",
+    title: "Basket",
     description:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore similique quaerat doloribus eaque molestiae maxime consequatur earumaccusantium, sequi officiis!",
+      "Meet our sustainable basket – a fashionable manifestation of our brand's eco-friendly ethos. Skillfully crafted from upcycled materials, this adaptable and personalized basket seamlessly merges practicality with an enduring statement of environmental responsibility",
   },
 ];

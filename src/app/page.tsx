@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import "../styles/main.css";
 import Image from "next/image";
@@ -41,6 +41,7 @@ import ContactsComponent from "@/components/ContactComponets";
 import { useToast } from "@/components/ui/use-toast";
 import { RevealWrapper } from "next-reveal";
 import { HiMenuAlt3 } from "react-icons/hi";
+import { CSSTransition } from "react-transition-group";
 
 function Home() {
   const { toast } = useToast();
@@ -49,6 +50,10 @@ function Home() {
   const [hasMenu, setMenu] = useState(false);
   const [changeTop, setChangeTop] = useState(false);
   const [header, setHeader] = useState(false);
+  const [showButton, setShowButton] = useState(true);
+  const [showPanel, setShowPanel] = useState(false);
+
+  const nodeRef = useRef(null);
 
   const onWheel = (e: any) => {
     e.preventDefault();
@@ -65,7 +70,7 @@ function Home() {
 
   const handleScroll = () => {
     var y = Math.abs(window.scrollY);
-    y > 150 && y < 800 ? setChangeTop(true) : setChangeTop(false);
+    y > 100 && y < 800 ? setChangeTop(true) : setChangeTop(false);
     y > 450 ? setHeader(true) : setHeader(false);
   };
 
@@ -91,7 +96,7 @@ function Home() {
               h1fontAlt.className
             )}
           >
-            hjsgohsgos
+            We Craft your imagination
           </h1>
           <p
             className={clsx(
@@ -99,9 +104,11 @@ function Home() {
               pfont.className
             )}
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-            similique quaerat doloribus eaque molestiae maxime consequatur earum
-            accusantium, sequi officiis!
+            100% Export Oriented Home Hardgoods & Home textile Manufacturer &
+            exporter. (Handicraft and Home Textile)
+            <br />
+            <br />
+            <i className="mt-[1rem]">BSCI & SEDEX Certificated*</i>
           </p>
         </div>
       </div>
@@ -130,7 +137,7 @@ function Home() {
               h1fontAlt.className
             )}
           >
-            hjsgohsgos
+            We Craft your imagination
           </h1>
           <p
             className={clsx(
@@ -138,9 +145,11 @@ function Home() {
               pfont.className
             )}
           >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
-            similique quaerat doloribus eaque molestiae maxime consequatur earum
-            accusantium, sequi officiis!
+            100% Export Oriented Home Hardgoods & Home textile Manufacturer &
+            exporter. (Handicraft and Home Textile)
+            <br />
+            <br />
+            <i className="mt-[2rem]">BSCI & SEDEX Certificated*</i>
           </p>
         </div>
       </div>
@@ -211,35 +220,45 @@ function Home() {
 
   const SidePanel = (): JSX.Element => {
     return (
-      <div
-        className="side-menu fixed h-[100vh] flex flex-col bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem] duration-500 transition-all gap-[4rem]"
-        style={{ right: hasMenu ? 0 : "-100%" }}
+      <CSSTransition
+        in={showPanel}
+        nodeRef={nodeRef}
+        timeout={300}
+        unmountOnExit
+        // onEnter={() => setShowButton(false)}
+        // onExited={() => setShowButton(true)}
+        className="side-menu fixed h-[100vh] flex flex-col bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem] duration-500 transition-all gap-[4rem] right-0"
+        // style={{ right: showPanel ? 0 : "-100%" }}
       >
-        <BiCross
-          className="text-[#575552] text-[24px] rotate-[130deg]"
-          onClick={() => setMenu((prev) => !prev)}
-        />
-        <div className="flex flex-col gap-[2rem] ml-[-1rem]">
-          {menu.map((item, index) => {
-            return (
-              <div
-                className="flex flex-row items-center gap-[2rem] sm:gap-[1rem] py-[1rem] px-[3rem] ml-[-1rem]"
-                key={index}
-              >
-                <div className="flex sm:hidden">
-                  <RiSeparator className="text-[18px] rotate-90" />
-                </div>
-                <a
-                  href={item.url}
-                  className={clsx("text-[#575552]", h3font.className)}
+        <div
+        // className="side-menu fixed h-[100vh] flex flex-col bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem] duration-500 transition-all gap-[4rem]"
+        >
+          <BiCross
+            className="text-[#575552] text-[24px] rotate-[130deg]"
+            onClick={() => setShowPanel(false)}
+          />
+          <div className="flex flex-col gap-[2rem] ml-[-1rem]">
+            {menu.map((item, index) => {
+              return (
+                <div
+                  className="flex flex-row items-center gap-[2rem] sm:gap-[1rem] py-[1rem] px-[3rem] ml-[-1rem]"
+                  key={index}
                 >
-                  {item.name}
-                </a>
-              </div>
-            );
-          })}
+                  <div className="flex sm:hidden">
+                    <RiSeparator className="text-[18px] text-[#575552] rotate-90" />
+                  </div>
+                  <a
+                    href={item.url}
+                    className={clsx("text-[#575552]", h3font.className)}
+                  >
+                    {item.name}
+                  </a>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </CSSTransition>
     );
   };
 
@@ -272,12 +291,12 @@ function Home() {
         })}
       </div>
 
-      <div className="body light-bg pt-[1rem] sm:pt-[3rem] border-[1px] flex flex-col">
+      <div className="body light-bg pt-[1rem] sm:pt-[3rem] flex flex-col">
         <div className="flex flex-row justify-between sm:justify-center z-[2000] w-[100%] items-center top-0">
           <Image src={rcblLogo} width={150} height={150} alt="" />
           <HiMenuAlt3
             className="menu-indicator flex sm:hidden text-[#575552] text-[24px] opacity-[0.8] mr-[2rem]"
-            onClick={() => setMenu((prev) => !prev)}
+            onClick={() => setShowPanel(true)}
           />
         </div>
         {/* HOME */}
@@ -376,10 +395,10 @@ function Home() {
             origin="right"
             duration={1800}
             reset
-            className="absolute bottom-[48%] sm:bottom-[30%]  right-[-1.5rem] border-[#746D64] p-[1rem] z-[2000] shadow-md rounded-tl-[1rem] rounded-bl-[1rem] bg-[#dfd6cc]"
+            className="absolute bottom-[42%] sm:bottom-[30%]  right-[-1.5rem] border-[#746D64] p-[1rem] z-[2000] shadow-md rounded-tl-[1rem] rounded-bl-[1rem] bg-[#dfd6cc]"
           >
             <p className={clsx("text-[#746D64] text-[12px]", pfont.className)}>
-              Swipe the image to left to see more! &nbsp;
+              Swipe to left to see more! &nbsp;
             </p>
           </RevealWrapper>
           <RevealWrapper
@@ -440,7 +459,7 @@ function Home() {
           className="flex  w-full h-full sm:h-[600px] items-center justify-center overflow-hidden"
         >
           <div className="flex flex-col sm:flex-row w-full h-full">
-            <div className="relative flex sm:w-[45%] flex-col h-full justify-center gap-[1rem] items-center p-[4rem] sm:p-[6rem] pt-[6rem] z-[100]">
+            <div className="relative flex sm:w-[45%] flex-col h-full justify-center gap-[1rem] items-center p-[3.5rem] sm:p-[6rem] pt-[6rem] z-[100]">
               <div className="sm:hidden block absolute top-5 left-[-40px] z-[50]">
                 <RevealWrapper origin="left" duration={1200} reset>
                   <BiSolidPlaneTakeOff className="text-[160px] text-[#00000018]" />
@@ -462,14 +481,22 @@ function Home() {
                 duration={1200}
                 reset
                 className={clsx(
-                  "text-[14px] text-[#575552]  text-center",
+                  "text-[14px] text-[#575552]  text-center leading-7",
                   pfont.className
                 )}
               >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur nobis modi deserunt repellendus, culpa, quia dolorum
-                quae accusamus quidem eos quisquam aliquam ratione qui optio
-                facilis voluptatem quo earum rem?
+                Royal Craft BD utilizes eco-friendly local materials and skills
+                to create sustainable artistic products, with the aim of
+                introducing non-traditional handicrafts to the global market.
+                Our dedicated and professional team works around the clock to
+                meet buyer requirements and stay up-to-date with industry
+                trends, ensuring our products align with this trendy sector. We
+                strongly believe that in today's global economy, environmental
+                protection is vital for any sustainable business to thrive and
+                endure, given the pressing issues of global warming, climate
+                change, ozone layer damage, and biodiversity loss.
+                <br />
+                <b>So contact us now</b>
               </RevealWrapper>
             </div>
             <div className="relative flex sm:w-[55%] bg-[#F6F7E4] flex-col h-full justify-center items-center z-[50] py-[2rem]">
@@ -600,11 +627,11 @@ function Home() {
             </div>
             <p
               className={clsx(
-                "text-[24px] text-[#575552] text-left pb-[1rem]",
+                "text-[22px] text-[#575552] text-center lg:text-left lg:pb-[1rem]",
                 italicfont.className
               )}
             >
-              There was a time we all were happy
+              Stay connected and embrace our handcrafted home decor.
             </p>
             <RevealWrapper
               distance="0px"
@@ -618,7 +645,7 @@ function Home() {
                   italicfont.className
                 )}
               >
-                L
+                O
               </p>
               <p
                 className={clsx(
@@ -626,7 +653,7 @@ function Home() {
                   italicfont.className
                 )}
               >
-                o
+                u
               </p>
               <p
                 className={clsx(
@@ -634,11 +661,15 @@ function Home() {
                   pfont.className
                 )}
               >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rem ipsum dolor sit
-                amet consectetur adipisicing elit. Aspernatur nobis modi
-                deserunt repellendus, culpa, quia dolorum quae accusamus quidem
-                eos quisquam aliquam ratione qui optio facilis voluptatem quo
-                earum rem?
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r brand is dedicated
+                to creating top-quality handmade decor products that have
+                already graced homes in the USA, Denmark, Poland, France, and
+                the Netherlands. By staying connected, you gain exclusive access
+                to our latest designs and special offers, ensuring your home is
+                always adorned with unique and culturally inspired decor. Join
+                us on our global journey, where quality craftsmanship meets your
+                passion for home decoration. Stay connected for a world of
+                elegant decor at your fingertips!
               </p>
             </RevealWrapper>
           </div>
@@ -672,10 +703,10 @@ function Home() {
                   pfont.className
                 )}
               >
-                lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur nobis modi deserunt repellendus, culpa, quia dolorum
-                quae accusamus quidem eos quisquam aliquam ratione qui optio
-                facilis voluptatem quo earum rem?
+                You have any question or queries you can ask us here. This is
+                the direct line to our brand. We value every queries and aim to
+                provide swift responses. Your input helps us enhance your
+                experience and improve our services. Thank you!
               </RevealWrapper>
               <div className="hidden lg:block absolute w-[3px] h-[150px] right-0 top-3 bg-[#eae0d5ff] rounded-[5px]" />
             </div>

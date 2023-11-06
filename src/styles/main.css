@@ -6,6 +6,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 main {
@@ -90,7 +91,6 @@ main {
   color: #eae0d5ff;
   transition: z-index 1s ease-in;
 }
-
 
 .float-box-right p,
 .float-box p {
