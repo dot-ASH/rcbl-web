@@ -12,6 +12,7 @@ html {
 main {
   position: relative;
   overflow-x: hidden;
+  background: #eae0d5ff;
 }
 
 #container {

@@ -2,8 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
-import "../styles/main.css";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { RiSeparator } from "react-icons/ri";
 import rcblLogo from "../../public/rcbllogo.png";
@@ -16,8 +14,6 @@ import { CiMail, CiLinkedin, CiMobile4 } from "react-icons/ci";
 import { IoIosBasket, IoIosFlower } from "react-icons/io";
 import { FaUserTie } from "react-icons/fa";
 import { AccountForm } from "@/components/ui/account-form";
-import "swiper/css";
-import "swiper/css/pagination";
 import { EffectFade, Navigation, Pagination } from "swiper/modules";
 import clsx from "clsx";
 import { Separator } from "@/components/ui/separator";
@@ -42,6 +38,14 @@ import { useToast } from "@/components/ui/use-toast";
 import { RevealWrapper } from "next-reveal";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { CSSTransition } from "react-transition-group";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import "../styles/main.css";
+import "swiper/css";
+import "swiper/css/pagination";
+import Image from "next/image";
+import { images } from "@/data/images";
+import { CldImage } from "next-cloudinary";
 
 function Home() {
   const { toast } = useToast();
@@ -108,7 +112,9 @@ function Home() {
             exporter. (Handicraft and Home Textile)
             <br />
             <br />
-            <i className="mt-[1rem]">BSCI & SEDEX Certificated*</i>
+            <i className="mt-[1rem]">
+              BSCI & SEDEX Certificates are in progress*
+            </i>
           </p>
         </div>
       </div>
@@ -225,14 +231,9 @@ function Home() {
         nodeRef={nodeRef}
         timeout={300}
         unmountOnExit
-        // onEnter={() => setShowButton(false)}
-        // onExited={() => setShowButton(true)}
         className="side-menu fixed h-[100vh] flex flex-col bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem] duration-500 transition-all gap-[4rem] right-0"
-        // style={{ right: showPanel ? 0 : "-100%" }}
       >
-        <div
-        // className="side-menu fixed h-[100vh] flex flex-col bg-[#eae0d5ff] p-[3rem] z-[3000] border-[0.1rem] border-[#575552] rounded-l-[1rem] duration-500 transition-all gap-[4rem]"
-        >
+        <div>
           <BiCross
             className="text-[#575552] text-[24px] rotate-[130deg]"
             onClick={() => setShowPanel(false)}
@@ -405,19 +406,22 @@ function Home() {
             origin="left"
             duration={600}
             reset
-            className="absolute bottom-[-1rem] lg:bottom-[unset] lg:top-[31rem] left-[-1.5rem] lg:left-[6%] 2xl:left-[5.5%] z-[2000]  rounded-tr-[1rem] rounded-br-[1rem] lg:rounded-tl-[1rem] shadow-xl shadow-stone-500"
+            className="absolute bottom-[-1rem] lg:bottom-[unset] lg:top-[33rem] left-[-1.5rem] lg:left-[6%] 2xl:left-[5.5%] z-[2000] lg:rounded-tl-[1rem] "
           >
-            <div>
-              <a
-                href="#contact"
+            <Button
+              className="bg-[#8b867f] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
+              asChild
+            >
+              <Link
+                href={"#contact"}
                 className={clsx(
-                  "bg-[#746D64] text-[15px] lg:text-[18px] text-[#dfd6cc] p-[0.7rem] sm:p-[0.5] rounded-tr-[1rem] rounded-br-[1rem] lg:rounded-[0.7rem] hover:underline px-[1.5rem]",
+                  "text-[18px] text-[#575552] text-center sm:text-left",
                   h1fontAlt.className
                 )}
               >
-                CONTACT US
-              </a>
-            </div>
+                <b>CONTACT US</b>
+              </Link>
+            </Button>
           </RevealWrapper>
         </div>
         {/* IN THE SPOTLIGHT */}
@@ -437,16 +441,25 @@ function Home() {
               IN THE SPOTLIGHT
             </p>
             <div
-              className="h-[100%] w-[100%] overflow-scroll rounded-[5px] mb-[1rem] sm:mb-[2rem]"
+              className="h-[100%] w-[100%] overflow-scroll rounded-[5px] mb-[0.5rem] sm:mb-[2rem]"
               id="container"
             >
-              <div className="flex w-[1200px] 2xl:w-[100%] h-full justify-between gap-[1rem] rounded-[5px] ">
-                {popular.map((item, index) => {
+              <div className="flex w-[1600px] 2xl:w-[100%] h-full justify-between gap-[3rem] rounded-[5px] overflow-hidden">
+                {images.map((item, index) => {
                   return (
                     <div
                       key={index}
-                      className="flex w-[270px] h-full bg-[#eae0d5ff] rounded-[5px]"
-                    ></div>
+                      className="flex flex-shrink-0 w-[350px] aspect-square rounded-[5px] overflow-hidden"
+                      style={{ background: item.bg }}
+                    >
+                      <CldImage
+                        width="600"
+                        height="600"
+                        src={item.href}
+                        alt={item.title}
+                        className="object-contain "
+                      />
+                    </div>
                   );
                 })}
               </div>
@@ -456,7 +469,7 @@ function Home() {
         {/* ABOUT US */} {/* BEST WE ARE */}
         <div
           id="about"
-          className="flex  w-full h-full sm:h-[600px] items-center justify-center overflow-hidden"
+          className="flex  w-full h-full sm:h-[650px] items-center justify-center overflow-hidden"
         >
           <div className="flex flex-col sm:flex-row w-full h-full">
             <div className="relative flex sm:w-[45%] flex-col h-full justify-center gap-[1rem] items-center p-[3.5rem] sm:p-[6rem] pt-[6rem] z-[100]">
@@ -496,7 +509,25 @@ function Home() {
                 endure, given the pressing issues of global warming, climate
                 change, ozone layer damage, and biodiversity loss.
                 <br />
-                <b>So contact us now</b>
+                <a href="#contact">
+                  <b>So contact us now</b>
+                </a>
+                <br />
+                <br />
+                <Button
+                  className="hover:bg-[#575552] hover:text-[#eae0d5ff] text-[#544f4a] bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem]"
+                  asChild
+                >
+                  <Link
+                    href={"/info/members"}
+                    className={clsx(
+                      "text-[18px] text-[#575552] text-center sm:text-left",
+                      pfont.className
+                    )}
+                  >
+                    learn more about us
+                  </Link>
+                </Button>
               </RevealWrapper>
             </div>
             <div className="relative flex sm:w-[55%] bg-[#F6F7E4] flex-col h-full justify-center items-center z-[50] py-[2rem]">
@@ -672,6 +703,20 @@ function Home() {
                 elegant decor at your fingertips!
               </p>
             </RevealWrapper>
+            <Button
+              className="hover:bg-[#575552] hover:text-[#eae0d5ff] text-[#544f4a] bg-[#F6F7E4] border-[#6d6a66] border-[0.005rem] w-max mt-[2rem]"
+              asChild
+            >
+              <Link
+                href={"/info/products"}
+                className={clsx(
+                  "text-[18px] text-[#575552] text-center sm:text-left",
+                  pfont.className
+                )}
+              >
+                learn more about our products
+              </Link>
+            </Button>
           </div>
           <div className="cycle relative flex w-full lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center ml-[2rem] p-[2rem] lg:p-[6rem]">
             <div className="mb-[2rem] lg:mb-[1rem]">
@@ -754,6 +799,15 @@ function Home() {
             <div className="flex w-full justify-center text-[15px] text-[#eae0d5ff]">
               {"<></>"}
             </div>
+            <Link
+              href="/info/members"
+              className={clsx(
+                "text-[15px] text-[#eae0d5ff] text-center tracking-[.25rem] p-[0.5rem] hover:underline",
+                italicfont.className
+              )}
+            >
+              Introducing our team members.
+            </Link>
             <div className="flex flex-row justify-center w-full py-[1rem] gap-[1rem] sm:gap-[2rem]">
               <a
                 href="#home"
@@ -819,7 +873,7 @@ function Home() {
               )}
             >
               {" "}
-              - There will be blood.
+              - We craft your imagination.
             </i>
             <Separator className="bg-[#a9a6a2]" />
             <div className="dev flex justify-between p-[0.5rem]">
