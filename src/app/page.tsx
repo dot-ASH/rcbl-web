@@ -4,7 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { RiSeparator } from "react-icons/ri";
-import rcblLogo from "../../public/rcbllogo.png";
+import rcblLogo from "../../public/logo_outline.png";
+import rcbl from "@/app/icon.png";
 import wmap from "../../public/wmap.png";
 import bag from "../../public/bagshadow.png";
 import cycle from "../../public/cycle.png";
@@ -164,30 +165,52 @@ function Home() {
 
   const Banner = ({ title, description }): JSX.Element => {
     return (
-      <div className="float-box-right hidden sm:flex sm:w-[300px]">
-        <div className="flex flex-row justify-center items-center gap-[.5rem]">
-          <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <h1
+      <>
+        <div className="float-box-right hidden sm:flex sm:w-[300px]">
+          <div className="flex flex-row justify-center items-center gap-[.5rem]">
+            <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
+            <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
+            <h1
+              className={clsx(
+                "text-[18px] text-[#eae0d5ff]",
+                h1fontAlt.className
+              )}
+            >
+              {title}
+            </h1>
+            <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
+            <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
+          </div>
+          <p
             className={clsx(
-              "text-[18px] text-[#eae0d5ff]",
-              h1fontAlt.className
+              "text-[12px] text-[#eae0d5ff] text-center sm:text-left",
+              pfont.className
             )}
           >
-            {title}
-          </h1>
-          <div className="w-2.5 h-2.5 rounded-[50%] bg-[#eae0d5ff]" />
-          <div className="w-1.5 h-1.5 rounded-[50%] bg-[#eae0d5ff]" />
+            {description}
+          </p>
         </div>
-        <p
-          className={clsx(
-            "text-[12px] text-[#eae0d5ff] text-center sm:text-left",
-            pfont.className
-          )}
+        <RevealWrapper
+          origin="left"
+          duration={600}
+          className={"hidden sm:flex absolute left-[3%] bottom-10"}
         >
-          {description}
-        </p>
-      </div>
+          <Button
+            className="bg-[#77736d] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
+            asChild
+          >
+            <Link
+              href={"#contact"}
+              className={clsx(
+                "text-[18px] text-[#575552] text-center sm:text-left",
+                h1fontAlt.className
+              )}
+            >
+              <b>CONTACT US</b>
+            </Link>
+          </Button>
+        </RevealWrapper>
+      </>
     );
   };
 
@@ -292,9 +315,15 @@ function Home() {
         })}
       </div>
 
-      <div className="body light-bg pt-[1rem] sm:pt-[3rem] flex flex-col">
-        <div className="flex flex-row justify-between sm:justify-center z-[2000] w-[100%] items-center top-0">
-          <Image src={rcblLogo} width={150} height={150} alt="" />
+      <div className="body light-bg pt-[1rem] sm:pt-[4rem] flex flex-col">
+        <div className="flex flex-row justify-between sm:justify-center z-[2000] w-[100%] items-center ">
+          <Image
+            src={rcblLogo}
+            width={100}
+            height={100}
+            alt="logo"
+            className="m-[1rem] sm:m-[0rem]"
+          />
           <HiMenuAlt3
             className="menu-indicator flex sm:hidden text-[#575552] text-[24px] opacity-[0.8] mr-[2rem]"
             onClick={() => setShowPanel(true)}
@@ -303,7 +332,7 @@ function Home() {
         {/* HOME */}
         <div
           id="home"
-          className="relative flex flex-col w-[98%] justify-center border-show  mt-[-3rem] p-[1rem] sm:p-[3rem] sm:py-[9rem] "
+          className="relative flex flex-col w-[98%] justify-center border-show  mt-[-2.5rem] p-[1rem] sm:p-[3rem] sm:py-[9rem] "
         >
           <h1
             className={clsx(
@@ -406,10 +435,10 @@ function Home() {
             origin="left"
             duration={600}
             reset
-            className="absolute bottom-[-1rem] lg:bottom-[unset] lg:top-[33rem] left-[-1.5rem] lg:left-[6%] 2xl:left-[5.5%] z-[2000] lg:rounded-tl-[1rem] "
+            className="flex sm:hidden absolute bottom-[-1.5rem] z-[2000] left-[2rem]"
           >
             <Button
-              className="bg-[#8b867f] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
+              className="bg-[#77736d] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
               asChild
             >
               <Link
@@ -444,7 +473,7 @@ function Home() {
               className="h-[100%] w-[100%] overflow-scroll rounded-[5px] mb-[0.5rem] sm:mb-[2rem]"
               id="container"
             >
-              <div className="flex w-[1600px] 2xl:w-[100%] h-full justify-between gap-[3rem] rounded-[5px] overflow-hidden">
+              <div className="flex w-[1600px] h-full justify-between gap-[3rem] rounded-[5px] overflow-hidden">
                 {images.map((item, index) => {
                   return (
                     <div
@@ -457,7 +486,7 @@ function Home() {
                         height="600"
                         src={item.href}
                         alt={item.title}
-                        className="object-contain "
+                        className="object-contain opacity-[0.8]"
                       />
                     </div>
                   );
@@ -469,10 +498,10 @@ function Home() {
         {/* ABOUT US */} {/* BEST WE ARE */}
         <div
           id="about"
-          className="flex  w-full h-full sm:h-[650px] items-center justify-center overflow-hidden"
+          className="flex  w-full h-full  items-center justify-center overflow-hidden"
         >
-          <div className="flex flex-col sm:flex-row w-full h-full">
-            <div className="relative flex sm:w-[45%] flex-col h-full justify-center gap-[1rem] items-center p-[3.5rem] sm:p-[6rem] pt-[6rem] z-[100]">
+          <div className="flex flex-col lg:flex-row w-full h-full">
+            <div className="relative flex lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center p-[3.5rem] lg:p-[5rem] pt-[6rem] z-[100]">
               <div className="sm:hidden block absolute top-5 left-[-40px] z-[50]">
                 <RevealWrapper origin="left" duration={1200} reset>
                   <BiSolidPlaneTakeOff className="text-[160px] text-[#00000018]" />
@@ -530,7 +559,7 @@ function Home() {
                 </Button>
               </RevealWrapper>
             </div>
-            <div className="relative flex sm:w-[55%] bg-[#F6F7E4] flex-col h-full justify-center items-center z-[50] py-[2rem]">
+            <div className="relative flex lg:h-[auto] lg:w-[60%] bg-[#F6F7E4] flex-col h-full justify-center items-center z-[50] py-[2rem]">
               <div className="absolute top-[-5rem] right-[-10px] sm:top-15 sm:right-[-40px] ">
                 <RevealWrapper origin="right">
                   <BsGlobeAmericas className="text-[92px] sm:text-[160px] text-[#00000018]" />
@@ -543,7 +572,7 @@ function Home() {
               </div>
               <Image
                 src={wmap}
-                width={600}
+                width={700}
                 height={150}
                 alt=""
                 className="py-[2rem] px-[2rem] sm:px-[0rem]"
@@ -643,12 +672,12 @@ function Home() {
         <div className="flex flex-col lg:flex-row w-full lg:h-[600px] items-center justify-center">
           <div
             id="connected"
-            className=" relative h-full flex w-full lg:w-[60%] bg-[#F6F7E4] flex-col justify-center z-[50] p-[3rem] py-[8rem] lg:px-[8rem] "
+            className=" relative h-full flex w-full lg:w-[60%] bg-[#F6F7E4] flex-col justify-center items-center lg:items-start z-[50] p-[3rem] py-[8rem] lg:px-[8rem] "
           >
-            <div className="relative mb-[2rem]">
+            <div className="relative mb-[2rem] flex flex-col items-center lg:items-start">
               <p
                 className={clsx(
-                  "text-[24px] lg:text-[32px] text-[#575552] text-left pb-[1rem]",
+                  "text-[24px] lg:text-[32px] text-[#575552] text-center lg:text-left pb-[1rem]",
                   h1font.className
                 )}
               >
@@ -658,7 +687,7 @@ function Home() {
             </div>
             <p
               className={clsx(
-                "text-[22px] text-[#575552] text-center lg:text-left lg:pb-[1rem]",
+                "text-[22px] text-[#575552]  lg:pb-[1rem]",
                 italicfont.className
               )}
             >
@@ -797,16 +826,22 @@ function Home() {
         <footer>
           <div className="footer flex flex-col w-full h-full py-[2rem] px-[7%] justify-center">
             <div className="flex w-full justify-center text-[15px] text-[#eae0d5ff]">
-              {"<></>"}
+              <Image
+                src={rcbl}
+                width={30}
+                height={30}
+                alt="logo"
+                className="m-[1rem] sm:m-[0rem]"
+              />
             </div>
             <Link
               href="/info/members"
               className={clsx(
-                "text-[15px] text-[#eae0d5ff] text-center tracking-[.25rem] p-[0.5rem] hover:underline",
-                italicfont.className
+                "text-[14px] text-[#eae0d5ff] text-center tracking-[.1rem] p-[0.5rem] pt-[1rem] hover:underline",
+                h2font.className
               )}
             >
-              Introducing our team members.
+              Introducing our team members
             </Link>
             <div className="flex flex-row justify-center w-full py-[1rem] gap-[1rem] sm:gap-[2rem]">
               <a
@@ -872,7 +907,6 @@ function Home() {
                 italicfont.className
               )}
             >
-              {" "}
               - We craft your imagination.
             </i>
             <Separator className="bg-[#a9a6a2]" />

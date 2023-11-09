@@ -1,6 +1,5 @@
 import Header from "@/components/header";
 import React from "react";
-import SideNav from "@/components/side-nav";
 
 const Info = () => {
   return (

@@ -21,6 +21,9 @@ main {
   scrollbar-width: thin;
   scrollbar-color: #434040c8 #746d644e;
 }
+#home {
+  height: 780px;
+}
 
 ::-webkit-scrollbar {
   height: 4px;
