@@ -21,9 +21,8 @@ const products = () => {
           </AccordionTrigger>
           <AccordionContent>
             <ol>
-              <li>Md. Maqsudul Haque</li>
-              <li>Md. Mahfuzul Haque</li>
-              <li>Sharmin Chowdhury</li>
+              <li><b>Sharmin Akter</b> (Chairman)</li>
+              <li><b>Mr. M Haque</b> (Managing Director)</li>
             </ol>
           </AccordionContent>
         </AccordionItem>

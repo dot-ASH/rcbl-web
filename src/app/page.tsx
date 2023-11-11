@@ -190,22 +190,21 @@ function Home() {
             {description}
           </p>
         </div>
-        <RevealWrapper origin="left" duration={1000} reset>
-          <Button
-            className="absolute left-[3%] bottom-10 hidden sm:flex bg-[#77736d] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
-            asChild
-          >
-            <Link
-              href={"#contact"}
+        <Button
+          className="absolute left-[3%] bottom-10 hidden sm:flex bg-[#77736d] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
+          asChild
+        >
+          <Link href={"#contact"}>
+            <b
               className={clsx(
-                "text-[18px] text-[#575552] text-center sm:text-left",
+                "text-[14px] text-[#eae0d5ff] text-center sm:text-left",
                 h1fontAlt.className
               )}
             >
-              <b>CONTACT US</b>
-            </Link>
-          </Button>
-        </RevealWrapper>
+              CONTACT US NOW
+            </b>
+          </Link>
+        </Button>
       </>
     );
   };
