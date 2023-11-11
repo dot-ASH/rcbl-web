@@ -15,7 +15,7 @@ const products = () => {
       <Accordion className="accordion" type="single" defaultValue="item-1">
         <AccordionItem value="item-1" className="border-b-[0px]">
           <AccordionTrigger
-            className={clsx("text-[24px] font-[700]", h1fontAlt.className)}
+            className={clsx("text-[24px] font-[700] text-[#746D64]", h1fontAlt.className)}
           >
             Products Capabilities
           </AccordionTrigger>
@@ -44,7 +44,7 @@ const products = () => {
         </AccordionItem>
         <AccordionItem value="item-2" className="border-b-[0px]">
           <AccordionTrigger
-            className={clsx("text-[24px] font-[700]", h1fontAlt.className)}
+            className={clsx("text-[24px] font-[700] text-[#746D64]", h1fontAlt.className)}
           >
             Product Category
           </AccordionTrigger>
@@ -57,7 +57,7 @@ const products = () => {
         </AccordionItem>
         <AccordionItem value="item-3" className="border-b-[0px]">
           <AccordionTrigger
-            className={clsx("text-[24px] font-[700]", h1fontAlt.className)}
+            className={clsx("text-[24px] font-[700] text-[#746D64]", h1fontAlt.className)}
           >
             Material Category
           </AccordionTrigger>

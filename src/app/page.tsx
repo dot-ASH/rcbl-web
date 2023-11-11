@@ -190,13 +190,9 @@ function Home() {
             {description}
           </p>
         </div>
-        <RevealWrapper
-          origin="left"
-          duration={600}
-          className={"hidden sm:flex absolute left-[3%] bottom-10"}
-        >
+        <RevealWrapper origin="left" duration={1000} reset>
           <Button
-            className="bg-[#77736d] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
+            className="absolute left-[3%] bottom-10 hidden sm:flex bg-[#77736d] text-[#eae0d5ff] hover:text-[#544f4a] hover:bg-[#eae0d5ff] border-[#6d6a66] border-[0.005rem] w-max shadow-xl shadow-stone-400 h-[45px]"
             asChild
           >
             <Link
@@ -486,7 +482,7 @@ function Home() {
                         height="600"
                         src={item.href}
                         alt={item.title}
-                        className="object-contain opacity-[0.8]"
+                        className="object-contain opacity-[0.85]"
                       />
                     </div>
                   );
@@ -508,7 +504,7 @@ function Home() {
                 </RevealWrapper>
               </div>
               <div className="mb-[1rem]">
-                <Image src={bag} width={100} height={100} alt=""></Image>
+                <img src="/bagshadow.png" width={100} height={100} alt=""></img>
               </div>
               <div
                 className={clsx(
@@ -570,13 +566,13 @@ function Home() {
                   <BiSolidPlaneTakeOff className="text-[160px] text-[#00000018]" />
                 </RevealWrapper>
               </div>
-              <Image
-                src={wmap}
+              <img
+                src="/wmap.png"
                 width={700}
                 height={150}
                 alt=""
                 className="py-[2rem] px-[2rem] sm:px-[0rem]"
-              ></Image>
+              ></img>
             </div>
           </div>
         </div>
@@ -749,7 +745,7 @@ function Home() {
           </div>
           <div className="cycle relative flex w-full lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center ml-[2rem] p-[2rem] lg:p-[6rem]">
             <div className="mb-[2rem] lg:mb-[1rem]">
-              <Image src={cycle} width={600} height={150} alt=""></Image>
+              <img src={"/cycle.png"} width={600} height={150} alt=""></img>
             </div>
           </div>
         </div>
@@ -826,8 +822,8 @@ function Home() {
         <footer>
           <div className="footer flex flex-col w-full h-full py-[2rem] px-[7%] justify-center">
             <div className="flex w-full justify-center text-[15px] text-[#eae0d5ff]">
-              <Image
-                src={rcbl}
+              <img
+                src={"/rcbl_icon.png"}
                 width={30}
                 height={30}
                 alt="logo"

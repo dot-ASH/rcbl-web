@@ -24,11 +24,11 @@ export const SideNav = () => {
           return (
             <Link
               href={item.path}
-              className="flex flex-row space-x-4 items-center px-4 py-3 rounded-full duration-200 hover:bg-white/10"
+              className="flex flex-row space-x-4 items-center px-4 py-3 rounded-full duration-200"
             >
               <span
                 className={clsx(
-                  `text-[22px] pt-2 hidden md:flex ${
+                  `text-[18px] pt-2 hidden md:flex ${
                     pathname === item.path ? "text-[#060606]" : "text-[#575552]"
                   }`,
                   h3font.className
