@@ -156,7 +156,7 @@ function Home() {
             exporter. (Handicraft and Home Textile)
             <br />
             <br />
-            <i className="mt-[2rem]">BSCI & SEDEX Certificated*</i>
+            <i className="mt-[2rem]">BSCI & SEDEX Certificates are in progress*</i>
           </p>
         </div>
       </div>
@@ -667,7 +667,7 @@ function Home() {
         <div className="flex flex-col lg:flex-row w-full lg:h-[600px] items-center justify-center">
           <div
             id="connected"
-            className=" relative h-full flex w-full lg:w-[60%] bg-[#F6F7E4] flex-col justify-center items-center lg:items-start z-[50] p-[3rem] py-[8rem] lg:px-[8rem] "
+            className=" relative h-full flex w-full lg:w-[60%] bg-[#F6F7E4] flex-col justify-center items-center lg:items-start z-[50] p-[3rem] py-[6rem] lg:px-[8rem] "
           >
             <div className="relative mb-[2rem] flex flex-col items-center lg:items-start">
               <p
