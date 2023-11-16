@@ -21,6 +21,7 @@ import { h1fontAlt, pfont } from "@/styles/myFonts";
 import { Textarea } from "@/components/ui/textarea";
 import clsx from "clsx";
 import "../../styles/main.css";
+import { color } from "@/styles/myColor";
 
 const api = process.env.NEXT_PUBLIC_API_URL || "";
 
@@ -59,6 +60,7 @@ export function AccountForm() {
               borderWidth: 1,
               borderColor: "#544f4a",
               padding: "4rem",
+              color: color.dark,
             },
           });
         } else {
