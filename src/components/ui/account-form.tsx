@@ -52,8 +52,8 @@ export function AccountForm() {
       .then((response) => {
         if (response.status === 200) {
           toast({
-            title: "You submitted the following values:",
-            description: [values.email, values.name],
+            title: "You submitted the message:",
+            description: [values.message],
             style: {
               background: "#eae0d5ff",
               borderWidth: 1,
