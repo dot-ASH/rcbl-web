@@ -481,7 +481,7 @@ function Home() {
                         height="600"
                         src={item.href}
                         alt={item.title}
-                        className="object-contain opacity-[0.85]"
+                        className="object-cover opacity-[0.85]"
                       />
                     </div>
                   );
