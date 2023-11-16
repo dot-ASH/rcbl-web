@@ -1,4 +1,9 @@
+<p align="center">
+ <img src="public/icon.png" width='300px'/> 
+</p>
 
-
-![rcbl](public/icon.png) 
-This is the landing page of [Royal Craft BD LTD](https://www.royalcraftbd.com), an export oriented home hard goods & home textile manufacturer & exporter.
+<p align="center">
+This is the landing page of 
+  <a href="https://www.royalcraftbd.com">Royal Craft BD LTD </a>, an export oriented home hardgoods & home textile manufacturer & exporter. <br />
+  <i>created with next.js 13</i>
+</p> 
