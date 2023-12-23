@@ -910,7 +910,7 @@ function Home() {
               <div className=" flex flex-row gap-2 items-center">
                 <p className={h2font.className}>devloped by,</p>
                 <a
-                  href=""
+                  href="mailto:sakir.ashker@gmail.com"
                   className={clsx("hover:underline", h2font.className)}
                 >
                   Sakir Ashker

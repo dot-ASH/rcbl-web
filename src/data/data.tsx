@@ -1,5 +1,4 @@
-import { BsGlobeAmericas } from "react-icons/bs";
-import { BiSolidPlaneTakeOff, BiSolidHomeSmile } from "react-icons/bi";
+import { BiSolidHomeSmile } from "react-icons/bi";
 import { MdHighQuality } from "react-icons/md";
 import { GiSandsOfTime, GiLifeInTheBalance } from "react-icons/gi";
 import { TbAlignBoxCenterMiddleFilled } from "react-icons/tb";
@@ -8,7 +7,6 @@ import { RiUser5Fill } from "react-icons/ri";
 import { AiFillPhone } from "react-icons/ai";
 import { HiMail } from "react-icons/hi";
 import { FaLinkedin } from "react-icons/fa";
-import { title } from "process";
 
 export const menu = [
   { name: "Home", url: "#home" },
@@ -27,17 +25,17 @@ export const popular = [
 export const whyUsPrimary = [
   {
     title: "Home Solution",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "Simple to complex every handicraft-themed decoration",
     icon: <BiSolidHomeSmile className="text-[36px] text-[#F6F7E4]" />,
   },
   {
     title: "Right Quality",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "Quality that matches your budget and taste",
     icon: <MdHighQuality className="text-[36px] text-[#F6F7E4]" />,
   },
   {
     title: "Efficiency",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "Efficient in every context of architecture, interior design, or product design",
     icon: <GiLifeInTheBalance className="text-[36px] text-[#F6F7E4]" />,
   },
 ];
@@ -45,24 +43,24 @@ export const whyUsPrimary = [
 export const whyUsSecondary = [
   {
     title: "Solution Based Approach",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "We prefer solution based approach for creating our products",
     icon: (
       <TbAlignBoxCenterMiddleFilled className="text-[36px] text-[#F6F7E4]" />
     ),
   },
   {
     title: "Quick Response",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "Swift and efficient communication, addressing your inquiries and needs promptly",
     icon: <GiSandsOfTime className="text-[36px] text-[#F6F7E4]" />,
   },
   {
     title: "Consumer Driver",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "We prioritize customers satisfaction and open to collaboration",
     icon: <RiUser5Fill className="text-[36px] text-[#F6F7E4]" />,
   },
   {
     title: "Commitment",
-    description: "uluhahu uihasl nvluhs auhalfn ygalh bfaywgb lab",
+    description: "Our products showcase a commitment to excellence and attention to detail",
     icon: <FaHandshake className="text-[36px] text-[#F6F7E4]" />,
   },
 ];
