@@ -110,11 +110,11 @@ function Home() {
             )}
           >
             100% Export Oriented Home Hardgoods & Home textile Manufacturer &
-            exporter. (Handicraft and Home Textile)
+            exporter.
             <br />
             <br />
             <i className="mt-[1rem]">
-              BSCI & SEDEX Certificates are in progress*
+              BSCI & SEDEX Certified*
             </i>
           </p>
         </div>
@@ -153,10 +153,10 @@ function Home() {
             )}
           >
             100% Export Oriented Home Hardgoods & Home textile Manufacturer &
-            exporter. (Handicraft and Home Textile)
+            exporter.
             <br />
             <br />
-            <i className="mt-[2rem]">BSCI & SEDEX Certificates are in progress*</i>
+            <i className="mt-[2rem]">BSCI & SEDEX Certified*</i>
           </p>
         </div>
       </div>

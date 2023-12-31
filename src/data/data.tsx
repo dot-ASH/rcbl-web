@@ -70,8 +70,8 @@ export const contacts = [
     title: "Phone",
     icon: <AiFillPhone className="text-[28px] text-[#F6F7E4]" />,
     value: [
-      { name: "+880 1300307004", href: "tel:+8801300307004" },
       { name: "+880 1764916879", href: "tel:+8801764916879" },
+      { name: "+880 1300307004", href: "tel:+8801300307004" },
     ],
     color: "#525e75",
   },

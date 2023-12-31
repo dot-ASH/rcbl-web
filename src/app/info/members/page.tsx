@@ -45,6 +45,7 @@ const products = () => {
               <li>Wafa Sourcing BD.</li>
               <li>AFOT: SEWDEEN</li>
               <li>PIRAN</li>
+              <li>Jinkou BV</li>
             </ul>
           </AccordionContent>
         </AccordionItem>
