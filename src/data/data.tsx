@@ -71,7 +71,6 @@ export const contacts = [
     icon: <AiFillPhone className="text-[28px] text-[#F6F7E4]" />,
     value: [
       { name: "+880 1764916879", href: "tel:+8801764916879" },
-      { name: "+880 1300307004", href: "tel:+8801300307004" },
     ],
     color: "#525e75",
   },
@@ -89,7 +88,7 @@ export const contacts = [
     value: [
       {
         name: "Royal Craft Bd LTD.",
-        href: "https://www.linkedin.com/in/royal-craft-bd-ltd-756b1b210/?originalSubdomain=bd",
+        href: "https://www.linkedin.com/company/royalcraftbdltd/",
       },
     ],
     color: "#1c7693",
