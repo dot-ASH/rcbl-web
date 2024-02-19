@@ -47,7 +47,6 @@ export function AccountForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     axios
       .post(api, values)
       .then((response) => {
@@ -89,8 +88,9 @@ export function AccountForm() {
               </FormLabel>
               <FormControl>
                 <Input
+                  style={{ borderColor: "#eae0d5ff" }}
                   className={clsx(
-                    "formInput text-[#eae0d5ff] text-[14px] ",
+                    "formInput text-[#eae0d5ff] text-[14px] outline-none",
                     pfont.className
                   )}
                   // style={{placeholder}}
@@ -119,6 +119,7 @@ export function AccountForm() {
               </FormLabel>
               <FormControl>
                 <Input
+                  style={{ borderColor: "#eae0d5ff" }}
                   className={clsx(
                     "formInput text-[#eae0d5ff] text-[14px]",
                     pfont.className
@@ -148,6 +149,7 @@ export function AccountForm() {
               </FormLabel>
               <FormControl>
                 <Textarea
+                  style={{ borderColor: "#eae0d5ff" }}
                   className={clsx(
                     "formInput text-[#eae0d5ff] text-[14px]",
                     pfont.className

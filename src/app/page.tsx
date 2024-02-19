@@ -113,9 +113,7 @@ function Home() {
             exporter.
             <br />
             <br />
-            <i className="mt-[1rem]">
-              BSCI & SEDEX Certified*
-            </i>
+            <i className="mt-[1rem]">BSCI & SEDEX Certified*</i>
           </p>
         </div>
       </div>
@@ -325,9 +323,9 @@ function Home() {
           />
         </div>
         {/* HOME */}
-        <div
+        <section
           id="home"
-          className="relative flex flex-col w-[98%] justify-center border-show  mt-[-2.5rem] p-[1rem] sm:p-[3rem] sm:py-[9rem] "
+          className="relative flex flex-col w-[98%] justify-center border-show  mt-[-2.5rem] p-[1rem] sm:p-[3rem] sm:py-[9rem]"
         >
           <h1
             className={clsx(
@@ -339,11 +337,11 @@ function Home() {
           </h1>
           <Swiper
             id="swiper"
-            className="mySwiper "
+            className="mySwiper cursor-grabbing"
             effect={"fade"}
             modules={[EffectFade, Navigation, Pagination]}
           >
-            <SwiperSlide className="relative light-bg swiperContainer ">
+            <SwiperSlide className="relative light-bg swiperContainer">
               <img className="swiper-img" src="/rcbl-bag.png" alt="" />
               <Intro />
               <Banner
@@ -447,41 +445,49 @@ function Home() {
               </Link>
             </Button>
           </RevealWrapper>
-        </div>
+        </section>
         {/* IN THE SPOTLIGHT */}
-        <div
+        <section
           id="popular"
-          className="flex w-full h-[650px] sm:h-[680px] bg-[#746D64] mt-[5rem] sm:mt-[-2rem] items-center justify-center pt-[1rem]"
+          className="flex w-full h-[650px] sm:h-[750px] bg-[#746D64] mt-[5rem] sm:mt-[-2rem] items-center justify-center pt-[1rem]"
           onWheel={(event) => onWheel(event)}
           onScroll={(event) => onWheel(event)}
         >
-          <div className="flex flex-col w-[85%] h-full p-[1rem] sm:p-[4rem] gap-[3rem] pb-[6rem]">
+          <div className="flex flex-col w-[85%] h-full p-[1rem] pb-[5rem] lg:p-[5rem] gap-[3rem] ">
             <p
               className={clsx(
-                "text-[32px] text-[#eae0d5ff] pt-[3rem] sm:pt-[2rem]",
+                "text-[32px] text-[#eae0d5ff] pt-[3rem] sm:pb-[2rem]",
                 h1font.className
               )}
             >
               IN THE SPOTLIGHT
             </p>
             <div
-              className="h-[100%] w-[100%] overflow-scroll rounded-[5px] mb-[0.5rem] sm:mb-[2rem]"
+              className="h-[400px] w-[100%] overflow-scroll rounded-[1rem] sm:mb-[2rem]"
               id="container"
             >
-              <div className="flex w-[1600px] h-full justify-between gap-[3rem] rounded-[5px] overflow-hidden">
+              <div className="flex w-[1400px] lg:w-[1600px] h-full justify-between gap-[3rem] rounded-[1rem] overflow-hidden cursor-grab uppercase text-[32px] font-bold text-[#eae0d5ff]">
                 {images.map((item, index) => {
                   return (
                     <div
                       key={index}
-                      className="flex flex-shrink-0 w-[350px] aspect-square rounded-[5px] overflow-hidden"
-                      style={{ background: item.bg }}
+                      className="popular-image relative flex flex-shrink-0 w-[300px] h-full lg:w-[350px] lg:h-full rounded-[1rem] overflow-hidden p-[1rem]"
+                      style={{ background: "#eae0d5ff" }}
                     >
+                      <h1
+                        className={clsx(
+                          italicfont.className,
+                          "image-text absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[300] pointer-events-none opacity-0 lowercase text-[48px]"
+                        )}
+                      >
+                        {item.title}
+                      </h1>
                       <CldImage
                         width="600"
                         height="600"
                         src={item.href}
                         alt={item.title}
-                        className="object-cover opacity-[0.85]"
+                        className="relative z-[200] w-full h-full object-contain opacity-[0.9]"
                       />
                     </div>
                   );
@@ -489,17 +495,17 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
         {/* ABOUT US */} {/* BEST WE ARE */}
-        <div
+        <section
           id="about"
-          className="flex  w-full h-full  items-center justify-center overflow-hidden"
+          className="flex w-full h-full items-center justify-center overflow-hidden"
         >
           <div className="flex flex-col lg:flex-row w-full h-full">
-            <div className="relative flex lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center p-[3.5rem] lg:p-[5rem] pt-[6rem] z-[100]">
+            <div className="relative flex lg:w-[40%] flex-col h-full justify-center gap-[1rem] items-center p-[3.5rem] lg:p-[5rem] pt-[6rem] z-[100] py-[4rem]">
               <div className="sm:hidden block absolute top-5 left-[-40px] z-[50]">
                 <RevealWrapper origin="left" duration={1200} reset>
-                  <BiSolidPlaneTakeOff className="text-[160px] text-[#00000018]" />
+                  <BiSolidPlaneTakeOff className="text-[160px] text-[#00000043]" />
                 </RevealWrapper>
               </div>
               <div className="mb-[1rem]">
@@ -543,7 +549,7 @@ function Home() {
                   asChild
                 >
                   <Link
-                    href={"/info/members"}
+                    href={"info/members"}
                     className={clsx(
                       "text-[18px] text-[#575552] text-center sm:text-left",
                       pfont.className
@@ -554,7 +560,7 @@ function Home() {
                 </Button>
               </RevealWrapper>
             </div>
-            <div className="relative flex lg:h-[auto] lg:w-[60%] bg-[#F6F7E4] flex-col h-full justify-center items-center z-[50] py-[2rem]">
+            <div className="relative flex lg:h-[auto] lg:w-[60%] bg-[#F6F7E4] flex-col h-full justify-center items-center z-[50] py-[4rem]">
               <div className="absolute top-[-5rem] right-[-10px] sm:top-15 sm:right-[-40px] ">
                 <RevealWrapper origin="right">
                   <BsGlobeAmericas className="text-[92px] sm:text-[160px] text-[#00000018]" />
@@ -562,7 +568,7 @@ function Home() {
               </div>
               <div className="hidden sm:block absolute top-5 left-[-40px] z-[50]">
                 <RevealWrapper origin="left" duration={1200} reset>
-                  <BiSolidPlaneTakeOff className="text-[160px] text-[#00000018]" />
+                  <BiSolidPlaneTakeOff className="text-[160px] text-[#00000023]" />
                 </RevealWrapper>
               </div>
               <img
@@ -574,14 +580,14 @@ function Home() {
               ></img>
             </div>
           </div>
-        </div>
+        </section>
         <div
           id="services"
           className="flex relative flex-col w-full py-[7rem] bg-[#746D64] justify-center items-center"
         >
           {/* WHY US */}
 
-          <div className="flex relative items-center justify-center mb-[5rem]">
+          <section className="flex relative items-center justify-center mb-[6rem] py-[3rem]">
             <p
               className={clsx(
                 "text-[26px] text-[#eae0d5ff] text-center mb-[1rem]",
@@ -591,7 +597,7 @@ function Home() {
               WHY US?
             </p>
             <div className="absolute w-[50px] h-[5px] bottom-0 bg-[#eae0d5ff] rounded-[5px]" />
-          </div>
+          </section>
           <div className="flex flex-row sm:flex-col gap-[1rem] sm:gap-[4rem] justify-center items-start sm:items-center">
             <RevealWrapper
               reset={true}
@@ -664,7 +670,7 @@ function Home() {
           </RevealWrapper>
         </div>
         {/* CONNECTED*/}
-        <div className="flex flex-col lg:flex-row w-full lg:h-[600px] items-center justify-center">
+        <section className="flex flex-col lg:flex-row w-full lg:h-[700px] items-center justify-center">
           <div
             id="connected"
             className=" relative h-full flex w-full lg:w-[60%] bg-[#F6F7E4] flex-col justify-center items-center lg:items-start z-[50] p-[3rem] py-[6rem] lg:px-[8rem] "
@@ -747,7 +753,7 @@ function Home() {
               <img src={"/cycle.png"} width={600} height={150} alt=""></img>
             </div>
           </div>
-        </div>
+        </section>
         {/* FORM*/}
         <div
           id="form"
@@ -800,7 +806,7 @@ function Home() {
         {/* CONTACT*/}
         <div
           id="contact"
-          className="flex flex-col w-full py-[6rem] px-[8rem] items-center justify-center gap-[4rem]"
+          className="flex flex-col w-full py-[8rem] px-[8rem] items-center justify-center gap-[5rem]"
         >
           <div className="flex relative items-center justify-center flex-nowrap">
             <p
@@ -819,7 +825,7 @@ function Home() {
         </div>
         {/* FOOTER */}
         <footer>
-          <div className="footer flex flex-col w-full h-full py-[2rem] px-[7%] justify-center">
+          <div className="footer flex flex-col w-full py-[2rem] px-[7%] justify-center">
             <div className="flex w-full justify-center text-[15px] text-[#eae0d5ff]">
               <img
                 src={"/rcbl_icon.png"}

@@ -44,6 +44,11 @@ li {
   width: 100%;
 }
 
+button svg{
+  width: 2rem;
+  color: #544f4a;
+}
+
 @media (width >= 640px) {
   .docContainer {
     padding: 0 5rem;
